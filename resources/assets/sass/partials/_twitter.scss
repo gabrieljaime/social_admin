@@ -1,0 +1,191 @@
+.twitter-card
+{
+ overflow: visible;
+}
+.mdl-card.mdl-card-twitt
+{
+padding: 0px !important;
+ overflow: visible;
+}
+.user-avatar-twitt {
+    margin-top: -40px;
+    margin-right: 0.5em;
+    margin-left: -25px;
+    float: left;
+    width: 70px;
+    border: 1px solid;
+    padding: 0px;
+    position: absolute;
+    background-color:white; 
+    @include vendor(border-radius, 50%);
+    @include draggless();
+}
+
+.user-avatar-twitt-cards {
+
+    width: 32px;
+    height: 32px;
+    border: 1px solid white;
+    padding: 0px;
+    background-color:#626262; 
+    margin-bottom: 5px;
+    margin-right: 5px;
+    text-align: center;
+    float: left;
+    @include vendor(border-radius, 50%);
+    @include draggless();
+}
+.user-avatar-twitt-list {
+
+    width: 32px;
+    height: 32px;
+    border: 1px solid  #939393;
+    padding: 0px;
+    background-color:white; 
+    margin: 5px;
+    text-align: center;
+    @include vendor(border-radius, 50%);
+    @include draggless();
+}
+.user-avatar-tweet {
+
+    width: 48px;
+    height: 48px;
+    float: left;
+
+    position: absolute;
+    @include vendor(border-radius, 50%);
+    @include draggless();
+}
+.tweet-fullname {
+    word-break: break-all;
+    color: #14171a;
+    font-size: 14px;
+    margin-right: 5px;
+    font-weight: bold;
+}
+
+.tweet-time {
+    word-break: break-all;
+    color: #657786;
+    white-space: nowrap;
+    margin-left: 5px;
+    text-decoration:none;
+    font-size: 14px;
+}
+.tweet-desc{
+    font-size: 14px !important;
+    line-height: 20px;
+    margin: -8px 0px 5px 55px;
+    display: flex;    
+    font-weight: normal;
+}
+.last-count-cards
+{
+    font-size: 90%;
+    position: relative;
+    top: 20%;
+}
+
+ .nf_card {
+
+     background-color: lightgrey;
+ }
+.no_card {
+
+    background-color:  lightgrey;
+}
+.sp_card {
+
+    background-color:  lightgrey;
+}
+.ta_card {
+
+    background-color:  lightgrey;
+}
+
+.mdl-card__title-twitt {
+    height: 100px;
+    background-size: cover;
+}
+
+.mdl-card__supporting-text-twitt{
+ overflow: visible;
+}
+
+.mdl-card__supporting-text.mdl-card__content-twitt 
+{
+
+
+}
+.twitter-card-icon {
+fill: white !important;
+    top: 13px;
+    position: absolute;
+    left: -15px;
+    color: white
+}
+
+.twitter-icon__white {
+fill: white !important;
+width: 24px;
+}
+
+
+
+
+.mdl-card__title-text.mdl-card__title-text-twitt{
+     width: 80%;
+     margin-top: -10px;
+    margin-left: 50px;
+}
+
+.mdl-card__title-text.mdl-card__title-twitt-card{
+     width: 80%;
+     margin-top: -10px;
+    margin-left: 50px;
+
+}
+.font-small{
+  font-size: small !important;
+  
+} 
+.bold {
+    font-weight: 700!important;
+}
+.semi-bold {
+    font-weight: 400!important;
+}
+.fs-12 {
+    font-size: 12px!important;
+    line-height: 22px!important;
+}
+.no-margin {
+    margin: 0!important;
+}
+
+.check-twitter {
+    color: #55acee;
+    margin-left: 1px; 
+    display: inline-block;
+    width: auto;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+}
+
+.name-twitter {
+    width: 150px !important;
+    display: inline-block!important;
+    margin-left: 10px;
+    vertical-align: middle;
+    width: 100%;
+    height: 100%;
+}
+
+.position-bottom{
+    position: absolute;
+    bottom: 0px;
+
+}
