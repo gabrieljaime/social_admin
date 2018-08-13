@@ -8,12 +8,14 @@
                 {{ count($twitters) }} Twitters Accounts 
             @else
                	You don't have Twitter Account Related Yet
-			@endif
+            @endif
+            
+            	<div class="mdl-layout--large-screen-only">
 			<i class="material-icons">arrow_forward</i>
 			  <span id="fow" href="#" >
 		 
-		
-				<i class="material-icons">people</i>{{$twitters->sum('followers_count')}}
+	
+		<i class="material-icons">people</i>{{$twitters->sum('followers_count')}}
         </span>
         <span class="mdl-tooltip mdl-tooltip--large" for="fow">Followers
         </span>
@@ -27,7 +29,7 @@
             </span>  
             <span class="mdl-tooltip mdl-tooltip--large" for="twit">Tweets
             </span>
-
+        </div>
 		</h2>
 		
        

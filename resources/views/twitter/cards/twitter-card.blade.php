@@ -52,7 +52,7 @@
 
 
            {!! Form::hidden('_method', 'DELETE') !!}
-             <a href="#" class=" dialiog-trigger-delete dialiog-trigger{{$twitter->social_id}} mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent right" data-socialid="{{$twitter->social_id}}">
+             <a href="#" class=" dialiog-trigger-delete dialiog-trigger{{$twitter->social_id}} mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent " data-socialid="{{$twitter->social_id}}">
                <i class="material-icons" aria-hidden="true">delete</i> {{ trans('twitter.btn-disconnect')}}  {{ trans('twitter.account') }} 
           
             </a>

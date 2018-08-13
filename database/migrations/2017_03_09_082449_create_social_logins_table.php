@@ -18,11 +18,13 @@ class CreateSocialLoginsTable extends Migration
             $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('provider', 50);
-            $table->text('social_id');
-            $table->text('toke');
-            $table->text('image');
-            $table->text('color');
-            $table->text('name');
+            $table->text('social_id')->nullable();
+            $table->text('social_name')->nullable();
+            $table->text('token')->nullable();
+            $table->text('secret')->nullable();
+            $table->text('image')->nullable();
+            $table->text('color')->nullable();
+            $table->text('name')->nullable();
             $table->timestamps();
         });
     }

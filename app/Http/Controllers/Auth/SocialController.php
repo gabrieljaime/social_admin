@@ -113,7 +113,7 @@ class SocialController extends Controller
             return redirect()->to('login')
                 ->with('status', 'danger')
                 ->with('message', trans('socials.denied'));
-        }
+            }
 
         $socialUserObject = Socialite::driver($provider)->user();
 
