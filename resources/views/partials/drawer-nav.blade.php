@@ -48,13 +48,16 @@
 		</a>
 		<a class="mdl-navigation__link {{ Request::is('twitter') || Request::is('twitter/agenda') ? 'mdl-navigation__link--current' : null }}" href="/twitter">
 			<i class="material-icons mdl-badge mdl-badge--overlap" @if (count($activeaccounts) != 0) data-badge="{{ count($activeaccounts) }}" @endif role="presentation">supervisor_account</i>
-			Twitter
+			Twitter Accounts
 		</a>
 		<a class="mdl-navigation__link {{ Request::is('twitter/agenda')  ? 'mdl-navigation__link--current' : null }}" href="/twitter/agenda">
 			<i class="material-icons mdl-badge mdl-badge--overlap" role="presentation">calendar_today</i>
 			Twitter Agenda
 		</a>
-		
+		<a class="mdl-navigation__link {{ Request::is('twitter/tweets')  ? 'mdl-navigation__link--current' : null }}" href="/twitter/tweets">
+		<i class="material-icons mdl-badge mdl-badge--overlap" role="presentation">send</i>
+			Tweet Sent
+		</a>
 
 		@role('admin')
 			<a class="mdl-navigation__link {{ (Request::is('users') || Request::is('users/create') || Request::is('users/deleted')) ? 'mdl-navigation__link--current' : null }}" href="{{ url('/users') }}">
@@ -87,7 +90,7 @@
 
 		<div class="mdl-layout-spacer"></div>
 
-		<a class="mdl-navigation__link" href="https://github.com/jeremykenedy/laravel-material-design" target="_blank">
+		<a class="mdl-navigation__link" href="https://gabrieljaime.com" target="_blank">
 			<i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i>
 			<span class="visuallyhidden">Help</span>
 		</a>

@@ -55,11 +55,11 @@
     <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
         <h2 class="mdl-card__title-text logo-style">
             @if ($tweets->count() === 1)
-                {{ $tweets->count() }} Twitter Account
+                {{ $tweets->count() }} Tweet Sent
             @elseif ($tweets->count() > 1)
-                {{ $tweets->count() }} Twitter Accounts
+                {{ $tweets->count() }} Tweets Sent
             @else
-                No Twitter's Accounts :(
+                No Tweets's Sent :(
             @endif
         </h2>
 
@@ -73,25 +73,27 @@
                        @include('twitter.cards.tweet')
                           
                     @endforeach
+                   
                     @include('dialogs.dialog-delete', ['isAjax'=>true,'dialogTitle' => 'Confirm Tweet Deletion', 'dialogSaveBtnText' => 'Delete'])
  
                            @endif
-        </div>
+               <div class="font-small">[*] We're showing only last 250 Tweets for your convenience.</div>  
+               <br>          
+            </div>
     </div>
     <div class="mdl-card__menu" style="top: -4px;">
 
         @include('partials.mdl-highlighter')
 
-        @include('partials.mdl-search')
-
-
     </div>
+
 </div>
 
 
 @endsection
 
 @section('footer_scripts')
+ @include('scripts.highlighter-script')
 
   @if ($tweets->count()>0) 
      <script type="text/javascript">

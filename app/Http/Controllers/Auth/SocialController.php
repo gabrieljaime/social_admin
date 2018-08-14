@@ -161,10 +161,20 @@ class SocialController extends Controller
 
                 ]);
 
+                $socialData->social_name=$username;
+                $socialData->name =$socialUserObject->name;
                 $socialData->social_id = $socialUserObject->id;
                 $socialData->provider = $provider;
                 $socialData->token =  $socialUserObject->token;
                 $socialData->secret =  $socialUserObject->tokenSecret;
+
+                 if ($provider=='twitter')
+                {
+                $socialData->color =$socialUserObject->user['profile_link_color'];
+                $socialData->image = substr($socialUserObject->user['profile_image_url'],0,-10 ).'bigger.'.substr($socialUserObject->user['profile_image_url'],-3 );
+               
+                }
+
                 $user->social()->save($socialData);
                 $user->attachRole($role);
                 $user->activated = true;

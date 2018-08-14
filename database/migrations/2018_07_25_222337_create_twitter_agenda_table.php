@@ -21,9 +21,9 @@ class CreateTwitterAgendaTable extends Migration
             $table->text('text',258);
             $table->text('image')->nullable();
             $table->text('link')->nullable();
-            $table->date('publication_date');
-            $table->date('publication_at');
-            $table->integer('frequency');
+            $table->date('publication_date')->nullable();
+            $table->time('publication_at')->nullable();
+            $table->integer('frequency')->nullable();
             $table->boolean('active');
             $table->timestamps();
 

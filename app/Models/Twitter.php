@@ -150,7 +150,7 @@ class Twitter extends Model
                     $twitt=new TwitterSent;
     
                     $twitt->user_id = $fe->social->user_id;
-                    $twitt->link=  $this->getLink($item->get_permalink());
+                    $twitt->link=  $item->get_permalink();
                     $twitt->social_id=  $fe->social->id;
                     $twitt->text= html_entity_decode($fe->begin.' '.$item->get_title().' '.$fe->end);
                     $twitt->file=  $item->get_enclosure()->link;
@@ -361,7 +361,7 @@ class Twitter extends Model
            
             if ($twittdata->link)
             {
-                $publicated->link= $twittdata->link;
+                $publicated->link= $this->getLink($twittdata->link) ;
             }
             if ($twittdata->file)
             {
@@ -435,6 +435,13 @@ class Twitter extends Model
 
             $response= TwitterSource::destroyTweet($tweet->twitt_id);
                    
+              return $response;   
+    }
+     public function getTweet ($id){
+
+        
+            $response=  Bitly::linkCountries($id);
+            return $response;   
                
     }
 

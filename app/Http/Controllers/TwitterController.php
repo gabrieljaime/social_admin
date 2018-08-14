@@ -44,7 +44,7 @@ class TwitterController extends Controller
     public function tweets()
     {
         $user = Auth::user();
-        $tweets = TwitterSent::FromUser($user->id)->get();
+        $tweets = TwitterSent::FromUser($user->id)->orderBy('created_at','desc')->take(250)->get();
 
         
         return view('twitter.tweets',compact('tweets'));
@@ -64,6 +64,23 @@ class TwitterController extends Controller
 
         $user = Auth::user();
         $tweets = TwitterSent::FromUser($user->id)->get();
+   
+        
+        return view('twitter.tweets',compact('tweets'))->with('status', 'Tweet Deleted Successfully');
+
+    }
+      public function stats($id)
+    {
+      
+       $tweet= TwitterSent::with('social')->where('twitt_id',$id)->first();
+
+       
+       $twitter= new Twitter();
+       
+       
+       dd($twitter->getTweet($tweet->link));
+
+      
    
         
         return view('twitter.tweets',compact('tweets'))->with('status', 'Tweet Deleted Successfully');

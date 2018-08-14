@@ -133,6 +133,12 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser']], function ()
 
     // Route to uplaod user background image
     Route::DELETE('/twitter/tweet/{id}', ['as' => 'twitter.tweets.delete', 'uses' => 'TwitterController@deleteTweet']); 
+    
+      // Update User Profile Ajax Route
+    Route::get('/twitter/tweet/stats/{id}', [
+        'as'   => 'twitter.tweets.stats',
+        'uses' => 'TwitterController@stats',
+    ]);
 
       // Route to uplaod user background image
     Route::get('/twitter/{id}', ['as' => 'twitter.status', 'uses' => 'TwitterController@status']); 
