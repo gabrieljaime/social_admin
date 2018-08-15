@@ -29,6 +29,7 @@ class CreateSocialLoginsTable extends Migration
         });
     }
 
+    
     /**
      * Reverse the migrations.
      *
