@@ -17,7 +17,9 @@ class CreateTwitterSentTable extends Migration
             $table->increments('id');
             $table->text('twitt_id');
             $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('social_id')->unsigned();
+            $table->foreign('social_id')->references('id')->on('social_login')->onDelete('cascade');
             $table->text('text');
             $table->text('file')->nullable();;
             $table->text('link')->nullable();;

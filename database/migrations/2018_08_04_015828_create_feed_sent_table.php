@@ -16,7 +16,9 @@ class CreateFeedSentTable extends Migration
           Schema::create('feed_sent', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('feed_id')->unsigned();
+            $table->foreign('feed_id')->references('id')->on('feeds')->onDelete('cascade');
             $table->integer('tweet_id')->unsigned();
+            $table->foreign('tweet_id')->references('id')->on('twitter_sent')->onDelete('cascade');
             $table->text('feed_item_id');
             $table->timestamps();
         });

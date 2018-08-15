@@ -16,6 +16,7 @@ class CreateFeedsTable extends Migration
         Schema::create('feeds', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('social_id')->unsigned();
+            $table->foreign('social_id')->references('id')->on('social_logins')->onDelete('cascade');
             $table->text('feed');
             $table->string('name',100);
             $table->string('begin',50)->nullable();
