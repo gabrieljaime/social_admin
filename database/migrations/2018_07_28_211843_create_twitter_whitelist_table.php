@@ -16,7 +16,7 @@ class CreateTwitterWhiteListTable extends Migration
         Schema::create('twitter_whitelist', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('social_id')->unsigned();
-            $table->foreign('social_id')->references('id')->on('social_login')->onDelete('cascade');
+            $table->foreign('social_id')->references('id')->on('social_logins')->onDelete('cascade');
             $table->integer('friend_id')->unsigned();
             $table->timestamps();
         });
