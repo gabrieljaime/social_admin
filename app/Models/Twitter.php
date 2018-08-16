@@ -22,6 +22,7 @@ use Cookie;
 use \App\Models\FriendsShort;
 use Cache;
 use Carbon\Carbon;
+use \App\Jobs\ProcessTweets;
 
 
 class Twitter extends Model
@@ -129,7 +130,7 @@ class Twitter extends Model
                 
                 $items = $feed->get_items();
 
-            
+                $minutes=0;
                 
 
                 $feed_posted= $fe->post_by_check;
@@ -158,10 +159,16 @@ class Twitter extends Model
                     $twitt->origin=  'Feed';
                     $twitt->prepend(   $fe->social,'social');
 
-  
-                    $this->MakeaTwitt( $twitt, $item->get_id());
                     $fe->last_public = $item->get_id();
+
+                    //$this->MakeaTwitt( $twitt, $item->get_id());
+
+                    ProcessTweets::dispatch($twitt, $item->get_id())->onQueue('FeedTweets')->delay(now()->addMinutes($minutes));
+
+                    $minutes=$minutes+2;
+
                     $feed_posted--;
+
                     }
                 }
         

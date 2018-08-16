@@ -34,6 +34,10 @@ class TwitterSent extends Model
     {
         return $query->where('user_id', $id);
     }
+     public function scopeFromFeed($query, $id)
+    {
+        return $query->where('origin_id', $id)->where('origin','feed');
+    }
 
 
 }

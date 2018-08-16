@@ -72,7 +72,7 @@
                                                    
                         <tr>
                             <td class="mdl-data-table__cell--non-numeric"><a href="{{ URL::to('feeds/' . $feed->id) }}">{{$feed->name}}</td>
-                            <td class="mdl-data-table__cell--non-numeric">{{$feed->term_to_check}} </td>
+                            <td class="mdl-data-table__cell--non-numeric">{{  Carbon\CarbonInterval::fromString($feed->term_to_check.'m')->cascade()->forHumans() }} </td>
                             <td class="mdl-data-table__cell--non-numeric">{{$feed->post_by_check}} </td>
                             <td class="mdl-data-table__cell--non-numeric mdl-layout--large-screen-only">{{$feed->begin}}</td>
                             <td class="mdl-data-table__cell--non-numeric mdl-layout--large-screen-only">{{$feed->end}} </td>
@@ -98,8 +98,8 @@
 
 
                                 {{-- VIEW USER ACCOUNT ICON BUTTON --}}
-                                <a href="{{ URL::to('feeds/' . $feed->id) }}" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" title="View Feed">
-                                    <i class="material-icons mdl-color-text--blue">visibility</i>
+                                <a href="{{ URL::to('twitter/tweets/feed/' . $feed->id) }}" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" title="View History">
+                                    <i class="material-icons mdl-color-text--blue">library_books</i>
                                 </a>
 
                                 {{-- EDIT USER ICON BUTTON --}}

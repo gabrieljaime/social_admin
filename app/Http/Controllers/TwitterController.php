@@ -50,6 +50,15 @@ class TwitterController extends Controller
         return view('twitter.tweets',compact('tweets'));
 
     }
+    public function tweetsbyfeed($feed)
+    {
+        
+        $tweets = TwitterSent::FromFeed($feed)->orderBy('created_at','desc')->take(250)->get();
+
+        
+        return view('twitter.tweets',compact('tweets'));
+
+    }
      public function deleteTweet($id)
     {
        $tweet= TwitterSent::with('social')->where('twitt_id',$id)->first();

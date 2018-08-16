@@ -8,19 +8,21 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use App\Models\Twitter;
 
-class ProcessTwitterFeeds implements ShouldQueue
+class ProcessTweets implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    public  $time;
+    public  $twittdata;
+    public  $feed_id;
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($time)
+    public function __construct($twittdata, $feed_id=null)
     {
-         $this->time=$time;
+         $this->twittdata=$twittdata;
+         $this->feed_id=$feed_id;
     }
 
     /**
@@ -31,7 +33,8 @@ class ProcessTwitterFeeds implements ShouldQueue
     public function handle()
     {
        $twitter = New Twitter();
-       $twitter->ProcessTwittersFeeds($this->time);
+
+       $twitter->MakeaTwitt($this->twittdata,$this->feed_id);
   
     }
 }

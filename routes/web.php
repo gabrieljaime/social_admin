@@ -130,6 +130,8 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser']], function ()
   
    // Route to uplaod user background image
     Route::get('/twitter/tweets', ['as' => 'twitter.tweets', 'uses' => 'TwitterController@tweets']); 
+     // Route to uplaod user background image
+    Route::get('/twitter/tweets/feed/{id}', ['as' => 'twitter.tweets.feed', 'uses' => 'TwitterController@tweetsbyfeed']); 
 
     // Route to uplaod user background image
     Route::DELETE('/twitter/tweet/{id}', ['as' => 'twitter.tweets.delete', 'uses' => 'TwitterController@deleteTweet']); 
