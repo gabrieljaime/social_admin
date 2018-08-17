@@ -148,7 +148,7 @@ class Twitter extends Model
 
                     
 
-                    $twitt=new TwitterSent;
+                    $twitt=collect();
     
                     $twitt->user_id = $fe->social->user_id;
                     $twitt->link=  $item->get_permalink();
@@ -157,13 +157,12 @@ class Twitter extends Model
                     $twitt->file=  $item->get_enclosure()->link;
                     $twitt->origin_id=  $fe->id;
                     $twitt->origin=  'Feed';
-                    $twitt->prepend(   $fe->social,'social');
 
                     $fe->last_public = $item->get_id();
 
                     //$this->MakeaTwitt( $twitt, $item->get_id());
 
-                    ProcessTweets::dispatch($twitt, $item->get_id())->onQueue('FeedTweets')->delay(now()->addMinutes($minutes));
+                    ProcessTweets::dispatch($twitt, $item->get_id())->onQueue('Tweets')->delay(now()->addMinutes($minutes));
 
                     $minutes=$minutes+2;
 
@@ -344,9 +343,23 @@ class Twitter extends Model
 
     public function MakeaTwitt ($twittdata, $feed_id = null) 
     {
+     
+        if (! isset($twittdata->social))
+        {
+             $social = Social::find($twittdata->social_id);
 
-            $this->SetCredencials ($twittdata->social->token,  $twittdata->social->secret);
+             $this->SetCredencials ($social->token,  $social->secret);
 
+        }
+        else
+        {
+             $this->SetCredencials ($twittdata->social->token,  $twittdata->social->secret);
+
+        }
+
+          
+             
+    
             $publicated= new TwitterSent;
 
             $publicated->user_id = $twittdata->user_id;
@@ -354,23 +367,23 @@ class Twitter extends Model
             $publicated->text=html_entity_decode(strip_tags($twittdata->text));
             
             $publicated->origin  = $twittdata->origin;
-            $publicated->origin_id=$twittdata->id;
+            $publicated->origin_id=$twittdata->origin_id;
 
             if ($twittdata->origin=='agenda')
             {
                  $publicated->id;
             }
-
-            if ($twittdata->image)
+         
+             if (isset($twittdata->social) && $twittdata->image)
                 {
                     $publicated->file=cloudinary_url(Cloudder::show("v".$twittdata->image."/twitter/".$twittdata->social_id."/".$twittdata->id,  array("width" => 506, "height" => 253, "crop" => "fill")));         
                 }
-           
-            if ($twittdata->link)
+            
+            if (isset($twittdata->link) && $twittdata->link)
             {
                 $publicated->link= $this->getLink($twittdata->link) ;
             }
-            if ($twittdata->file)
+            if (isset($twittdata->file) && $twittdata->file)
             {
                  $publicated->file=$twittdata->file;
             }

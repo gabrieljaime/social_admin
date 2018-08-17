@@ -63,6 +63,18 @@ return [
             'queue'       => 'default',
             'retry_after' => 90,
         ],
+        'TwitterFeeds' => [
+            'driver'      => 'redis',
+            'connection'  => 'default',
+            'queue'       => 'ProcessTwitterFeeds',
+            'retry_after' => 90,
+        ],
+        'Tweets' => [
+            'driver'      => 'redis',
+            'connection'  => 'default',
+            'queue'       => 'Tweets',
+            'retry_after' => 90,
+        ],
 
         'social' => [
             'driver'     => 'redis',

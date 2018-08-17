@@ -40,6 +40,7 @@ class TwitterController extends Controller
         return view('twitter.index',compact('twitters', 'socials'));
 
     }
+    
 
     public function tweets()
     {

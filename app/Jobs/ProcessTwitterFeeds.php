@@ -7,19 +7,21 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use App\Models\Twitter;
+use Log;
 
 class ProcessTwitterFeeds implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    public  $time;
+    protected  $time;
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($time)
+    public function __construct( $time)
     {
+         
          $this->time=$time;
     }
 

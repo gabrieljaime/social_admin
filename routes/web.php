@@ -157,6 +157,8 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser']], function ()
     // User Tasks Routes
     Route::resource('/twitter', 'TwitterController');
 
+  
+
 });
 
 // Registered, activated, and is admin routes.
