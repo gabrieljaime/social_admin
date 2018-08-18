@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\TwitterAgenda;
+use App\Models\TwitterSent;
 use App\Models\Twitter;
 use App\Models\Social;
 use Auth;
@@ -78,8 +79,18 @@ class TwitterAgendaController extends Controller
             $agenda['frequency']=1;
             
         }
+         
+     
 
-        $newagenda =TwitterAgenda::create($agenda);
+        if (TwitterSent::WasSent($agenda))
+        {
+            return back()->with('error', 'That Twitter was already posted. Try again'); 
+        }
+        else
+        {
+           $newagenda= TwitterAgenda::create($agenda);
+        }
+
          if ($request->hasFile('image')) {
             
 
@@ -94,6 +105,7 @@ class TwitterAgendaController extends Controller
         {
             $newagenda=array_add($newagenda,  'origin','agenda_now');
             $tweet=new Twitter();
+
             $tweet->MakeaTwitt($newagenda);  
              return redirect('/twitter/agenda')->with('status', 'Twitt Posted'); 
    
@@ -196,7 +208,7 @@ class TwitterAgendaController extends Controller
 
         return redirect('/twitter/agenda')->with('status', 'Twitt Agended Deleted');
     }
-
+    
     
     
 }

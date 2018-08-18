@@ -357,6 +357,7 @@ class Twitter extends Model
 
         }
 
+
           
              
     
@@ -367,7 +368,15 @@ class Twitter extends Model
             $publicated->text=html_entity_decode(strip_tags($twittdata->text));
             
             $publicated->origin  = $twittdata->origin;
-            $publicated->origin_id=$twittdata->origin_id;
+
+            if (isset($twittdata->origin_id)){
+                $publicated->origin_id=$twittdata->origin_id;
+            }
+            else
+                {
+                     $publicated->origin_id=$twittdata->id;
+                }
+         
 
             if ($twittdata->origin=='agenda')
             {
@@ -452,10 +461,10 @@ class Twitter extends Model
     public function deleteTweet ($tweet){
 
             $this->SetCredencials($tweet->social['token'],$tweet->social['secret']);
-
+            
             $response= TwitterSource::destroyTweet($tweet->twitt_id);
-                   
-              return $response;   
+           
+            return $response;   
     }
      public function getTweet ($id){
 
@@ -464,5 +473,5 @@ class Twitter extends Model
             return $response;   
                
     }
-
+    
 }

@@ -38,6 +38,33 @@ class TwitterSent extends Model
     {
         return $query->where('origin_id', $id)->where('origin','feed');
     }
+     public function scopeOfSocial($query, $id)
+    {
+        return $query->where('social_id', $id);
+    }
+    public static function WasSent($twett)
+    {
+        if (is_array($twett))
+        {
+            $social_id=$twett['social_id'];
+            $text=$twett['text'];
+        }
+        else
+        {
+            $social_id=$twett->social_id;
+            $text=$twett->text;
+            
+        }
+     
 
+        $twitter=  TwitterSent::OfSocial($social_id)->where('text',$text)->get();
+        
+       
+        return !$twitter->isEmpty();  
+      
+        
+    
+         
+    }
 
 }

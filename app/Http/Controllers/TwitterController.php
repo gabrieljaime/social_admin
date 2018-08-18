@@ -64,10 +64,11 @@ class TwitterController extends Controller
     {
        $tweet= TwitterSent::with('social')->where('twitt_id',$id)->first();
 
-      
+     
        $twitter= new Twitter();
-       $twitter->deleteTweet($tweet);
+       //$twitter->deleteTweet($tweet);
         
+      
        $tweet->delete();
         
 
