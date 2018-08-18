@@ -51,7 +51,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'https://'),
+    'url' => env('APP_URL', 'https://social.gabrieljaime.com'),
 
     /*
     |--------------------------------------------------------------------------
