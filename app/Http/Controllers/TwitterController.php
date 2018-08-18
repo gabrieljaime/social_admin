@@ -66,7 +66,7 @@ class TwitterController extends Controller
 
      
        $twitter= new Twitter();
-       //$twitter->deleteTweet($tweet);
+       $twitter->deleteTweet($tweet);
         
       
        $tweet->delete();
