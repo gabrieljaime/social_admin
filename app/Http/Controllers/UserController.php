@@ -6,6 +6,7 @@ use Auth;
 use App\Models\Twitter;
 use App\Models\Social;
 
+
 class UserController extends Controller
 {
     /**
@@ -25,6 +26,7 @@ class UserController extends Controller
      */
     public function index()
     {
+      
         $user = Auth::user();
         $socials = Social::FromUser($user->id)->get();
         $twitters= new Twitter;

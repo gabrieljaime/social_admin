@@ -315,3 +315,28 @@
   }
 }
 
+.cookie_style{
+      left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 1em 1.8em;
+    width: fit-content;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    color:#fff;
+    position: fixed;
+    overflow: hidden;
+    box-sizing: border-box;
+    font-family: Helvetica,Calibri,Arial,sans-serif;
+    font-size: 16px;
+    line-height: 1.5em;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    z-index: 9999;
+    opacity: 0.95;
+    transition: opacity 1s ;
+    border-radius: 0px 4px 0px 0px;
+}
+

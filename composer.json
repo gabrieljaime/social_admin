@@ -29,6 +29,7 @@
         "socialiteproviders/instagram": "^3.0",
         "socialiteproviders/twitch": "^3.0",
         "socialiteproviders/youtube": "^3.0",
+        "spatie/laravel-cookie-consent": "^2.4",
         "thujohn/twitter": "^2.2",
         "webpatser/laravel-uuid": "^2.0",
         "willvincent/feeds": "^1.1"

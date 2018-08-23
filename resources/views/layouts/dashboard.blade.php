@@ -31,11 +31,12 @@
             <link rel="stylesheet" type="text/css" href="{{ asset('css/mdl-themes/material.min.css') }}" id="user_theme_link">
         @endif
 
+        
         {{-- Custom App Styles --}}
         <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
-
+        
         @yield('template_linked_css')
-
+        
         <style type="text/css">
             @yield('template_fastload_css')
 
@@ -61,6 +62,7 @@
     <body class="mdl-color--grey-100">
 
         <div id="app" class="demo-layout dashboard-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+       
 
             @include('partials.form-status')
             @yield('template-form-status')
@@ -101,6 +103,7 @@
 
                 </div>
             </main>
+                 @include('cookieConsent::index')
         </div>
 
         {{-- Scripts --}}
