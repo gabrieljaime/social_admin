@@ -1,14 +1,23 @@
 @extends('layouts.dashboard')
 
 @section('template_title')
-  {{-- Showing {{'@'.$social->social_name}}  --}}
+@isset($social)
+   Tweets of {{'@'.$social->social_name}}
+@else
+  Tweets of {{Auth::user()->name}}
+@endisset
+  
+  
 @endsection
 
 @section('template_linked_css')
 @endsection
 
 @section('header')
-    {{-- {{ trans('twitter.title-'.$type) }} {{ trans('twitter.accounts') }}  --}}
+    {{ trans('twitter.sent-tweets') }} 
+    @isset($type)
+        of {{title_case($type)}} 
+    @endisset
 @endsection
 
 @section('breadcrumbs')
@@ -30,23 +39,25 @@
          <i class="material-icons">chevron_right</i>
         <meta itemprop="position" content="2" />
     </li>
-     {{-- <li  itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-     <a itemprop="item" href="/twitter/{{ $social->id }}" >
+    @isset($social)
+        <li  itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <a itemprop="item" href="/twitter/{{ $social->id }}" >
+                <span itemprop="name">
+            {{'@'.$social->social_name}}
+                </span>
+            </a>
+            <i class="material-icons">chevron_right</i>
+            <meta itemprop="position" content="3" />
+        </li>
+    @endisset
+     <li class="active" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+     <a  itemprop="item" href="" class="disable">
             <span itemprop="name">
-              {{'@'.$social->social_name}}
-            </span>
-        </a>
-         <i class="material-icons">chevron_right</i>
-        <meta itemprop="position" content="3" />
-    </li>
-     <li  itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-     <a class="active" itemprop="item" href="/twitter/{{ $social->id }}/{{$type}}" disabled>
-            <span itemprop="name">
-               {{ trans('twitter.title-'.$type) }} 
+               {{ trans('twitter.sent-tweets') }} 
             </span>
         </a>
         <meta itemprop="position" content="4" />
-    </li> --}}
+    </li> 
 @endsection
 
 @section('content')
@@ -77,8 +88,11 @@
                     @include('dialogs.dialog-delete', ['isAjax'=>true,'dialogTitle' => 'Confirm Tweet Deletion', 'dialogSaveBtnText' => 'Delete'])
  
                            @endif
-               <div class="font-small">[*] We're showing only last 250 Tweets for your convenience.</div>  
-               <br>          
+
+                 @if ($tweets->count() > 250)           
+               <div class="font-small margin-bottom-1 margin-left-1 position-botton">[*] We're showing only last 250 Tweets for your convenience.</div>  
+               
+                @endif          
             </div>
     </div>
     <div class="mdl-card__menu" style="top: -4px;">

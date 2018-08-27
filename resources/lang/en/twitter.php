@@ -42,6 +42,8 @@ return [
     'confirm_modal_tweet_button_save_text' => 'Tweet it Now!',
     'confirm_modal_agenda_button_save_text' => 'Schedule it!',
 
+     'sent-tweets'=>'Sent Twittes',
+
     
 
 ];

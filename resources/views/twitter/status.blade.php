@@ -1,11 +1,11 @@
 @extends('layouts.dashboard')
 
 @section('template_title')
-    Welcome {{ Auth::user()->name }}
+   {{'@'.$social_card->screen_name }}
 @endsection
 
 @section('header')
-	{{ trans('auth.loggedIn', ['name' => Auth::user()->name]) }}
+	Twitter Account  {{'@'.$social_card->screen_name }}
 @endsection
 
 @section('breadcrumbs')
@@ -19,9 +19,24 @@
 		<i class="material-icons">chevron_right</i>
 		<meta itemprop="position" content="1" />
 	</li>
-	<li class="active">
-		{{ trans('titles.dashboard') }}
-	</li>
+	 <li  itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <a itemprop="item" href="/twitter" >
+            <span itemprop="name">
+                Twitter's
+            </span>
+        </a>
+         <i class="material-icons">chevron_right</i>
+        <meta itemprop="position" content="2" />
+    </li>
+     <li  itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+     <a itemprop="item" href="/twitter/{{ $id }}" >
+            <span itemprop="name">
+              {{'@'.$social_card->screen_name}}
+            </span>
+        </a>
+       
+        <meta itemprop="position" content="3" />
+    </li>
 
 @endsection
 
@@ -64,11 +79,11 @@
 		</div>	
 		<div class="mdl-grid" style="margin:0px">
 			@include('twitter.cards.twitter-card', ['twitter' => $social_card])
-			 @include('twitter..cards.twitter-foll', ['friends' => $friends->where('nofollow', true),'type'=>'nf'])
-			 @include('twitter.cards.twitter-foll',  ['friends' => $friends->where('noactive', true),'type'=>'no'])
-			 @include('twitter.cards.twitter-activity')
-			 @include('twitter.cards.twitter-foll', ['friends' => $friends->where('spam', true),'type'=>'sp'])
-			 @include('twitter.cards.twitter-foll', ['friends' => $friends->where('tooactive', true),'type'=>'ta'])
+			@includeWhen($friends->where('nofollow', true)->count()>0,'twitter.cards.twitter-foll', ['friends' => $friends->where('whitelist',false)->where('nofollow', true),'type'=>'nf'])
+			@includeWhen($friends->where('noactive', true)->count()>0,'twitter.cards.twitter-foll',  ['friends' => $friends->where('whitelist',false)->where('noactive', true),'type'=>'no'])
+			@include('twitter.cards.twitter-activity')
+			@includeWhen($friends->where('spam', true)->count()>0,'twitter.cards.twitter-foll', ['friends' => $friends->where('whitelist',false)->where('spam', true),'type'=>'sp'])
+			@includeWhen($friends->where('tooactive', true)->count()>0,'twitter.cards.twitter-foll', ['friends' => $friends->where('whitelist',false)->where('tooactive', true),'type'=>'ta'])
 		 </div>
 	
 

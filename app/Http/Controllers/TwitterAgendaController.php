@@ -154,7 +154,7 @@ class TwitterAgendaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, $this->rules);
+       
         
         $agenda = TwitterAgenda::findOrFail($id);
        

@@ -31,6 +31,7 @@ class FriendsShort extends Model
          'nofollow',
          'noactive',
          'tooactive',
+         '',
          'spam',
     ];
 
@@ -50,9 +51,8 @@ public function CreateShortFriend ($friend,$followers,$account)
 
       
       
-      if (array_has($friend,'status'))
-        {
-            $this->last_status = Carbon::createFromFormat('D M d G:i:s O Y', collect($friend->status)->shift(), 'UTC');
+      if (array_has($friend,'status')){
+        $this->last_status = Carbon::createFromFormat('D M d G:i:s O Y', collect($friend->status)->shift(), 'UTC');
         }
        
        $this->created_at=Carbon::createFromFormat('D M d G:i:s O Y',$friend->created_at, 'UTC');
@@ -68,23 +68,19 @@ public function CreateShortFriend ($friend,$followers,$account)
        $this->default_profile_image= $friend->default_profile_image;
        $this->verified= $friend->verified;
 
-       
+        $this->nofollow=(!$followers->contains($friend->id));
+        $this->noactive=($this->last_status < now('UTC')->subMonth());
+        $this->tooactive=($this->statuses_count/(now('UTC')->diffInDays($this->created_at)) >20);
+        $this->spam=($this->default_profile_image || ($this->statuses_count==0));
+        
+        if ($whitelist->contains($friend->id)) {
+            $this->whitelist = true;
+        } else {
+            $this->whitelist = false;
+        }
 
-        if ($whitelist->contains($friend->id))
-        {
-            $this->nofollow=false;
-            $this->noactive=false;
-            $this->tooactive=false;
-            $this->spam=false;
-            
-        }
-        else
-        {
-            $this->nofollow=(!$followers->contains($friend->id));
-            $this->noactive=($this->last_status < now('UTC')->subMonth());
-            $this->tooactive=($this->statuses_count/(now('UTC')->diffInDays($this->created_at)) >20);
-            $this->spam=($this->default_profile_image || ($this->statuses_count==0));
-        }
+        
+
 
                   
     return  $this;

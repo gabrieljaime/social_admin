@@ -121,18 +121,30 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser']], function ()
     Route::resource('/feeds', 'FeedsController');
     // User Tasks Routes
     Route::resource('/twitter/agenda', 'TwitterAgendaController');
-
     
+    Route::delete('/twitter/whitelist/delete', ['as' => 'twitter.whitelist.delete', 'uses' => 'WhiteListController@delete']); 
+      // Route add whitelist
+    Route::post('/twitter/{id}/whitelist/', ['as' => 'twitter.addwhitelist', 'uses' => 'WhiteListController@addwhitelist']);
+     // Route add whitelist
+    Route::get('/twitter/{id}/whitelist/', ['as' => 'twitter.whitelist', 'uses' => 'WhiteListController@whitelist']);
+   // Route add whitelist
+    Route::get('/twitter/whitelist/all', ['as' => 'twitter.whitelistall', 'uses' => 'WhiteListController@whitelistall']);
+  // Route to uplaod user background image
+  
+    
+
     Route::delete('/twitter/{id}', [
         'as'   => 'delete_{id}',
         'uses' => 'TwitterController@deleteTwitterAccount',
     ]);
   
+    
    // Route to uplaod user background image
     Route::get('/twitter/tweets', ['as' => 'twitter.tweets', 'uses' => 'TwitterController@tweets']); 
      // Route to uplaod user background image
     Route::get('/twitter/tweets/feed/{id}', ['as' => 'twitter.tweets.feed', 'uses' => 'TwitterController@tweetsbyfeed']); 
-
+    // Route to uplaod user background image
+    Route::get('/twitter/tweets/social/{id}', ['as' => 'twitter.tweets.social', 'uses' => 'TwitterController@tweetsbysocial']); 
     // Route to uplaod user background image
     Route::DELETE('/twitter/tweet/{id}', ['as' => 'twitter.tweets.delete', 'uses' => 'TwitterController@deleteTweet']); 
     
@@ -151,9 +163,7 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser']], function ()
 
       // Route to uplaod user background image
     Route::post('/twitter/{id}/unfollow/{friend_id}', ['as' => 'twitter.unfollow', 'uses' => 'TwitterController@unfollow']);
-      // Route add whitelist
-    Route::post('/twitter/{id}/whitelist/{friend_id}', ['as' => 'twitter.addwhitelist', 'uses' => 'TwitterController@addwhitelist']);
- 
+    
     // User Tasks Routes
     Route::resource('/twitter', 'TwitterController');
 

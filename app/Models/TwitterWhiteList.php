@@ -10,6 +10,7 @@ class TwitterWhiteList extends Model
     
     protected $guarded = ['id'];
 
+
     /**
      * The attributes that are mass assignable.
      *
@@ -17,7 +18,12 @@ class TwitterWhiteList extends Model
      */
     protected $fillable = [
         'social_id',
-        'friend_id'
+        'friend_id',
+        'profile_image_url',
+        'screen_name',
+        'name',
+        'verified',
+        'location',
     ];
 
 

@@ -38,3 +38,8 @@ Homestead.json
 /storage/framework
 /storage/logs
 /storage/users
+
+
+### History  ###
+.history/*
+/.history/*

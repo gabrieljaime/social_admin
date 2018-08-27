@@ -58,6 +58,10 @@
 		<i class="material-icons mdl-badge mdl-badge--overlap" role="presentation">send</i>
 			Tweet Sent
 		</a>
+		<a class="mdl-navigation__link {{ Request::is('twitter/whitelist')  ? 'mdl-navigation__link--current' : null }}" href="/twitter/whitelist/all">
+		<i class="material-icons mdl-badge mdl-badge--overlap" role="presentation">security</i>
+			White List
+		</a>
 
 		@role('admin')
 			<a class="mdl-navigation__link {{ (Request::is('users') || Request::is('users/create') || Request::is('users/deleted')) ? 'mdl-navigation__link--current' : null }}" href="{{ url('/users') }}">

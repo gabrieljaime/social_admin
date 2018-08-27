@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Social extends Model
 {
+     protected $guarded = [
+        'id',
+    ];
     /**
      * The database table used by the model.
      *
@@ -55,6 +58,7 @@ class Social extends Model
     {
         return $query->where('user_id', $id);
     }
+    
     public function scopeFromProvider($query, $red)
     {
         return $query->where('provider', $red);
