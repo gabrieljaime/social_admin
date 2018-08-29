@@ -27,6 +27,3 @@
          </defs>
 </svg>
  </div>
-@section('footer_scripts')
-   
-@endsection

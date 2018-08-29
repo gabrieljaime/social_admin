@@ -91,7 +91,7 @@
 				<tr>
 					<th class="mdl-data-table__cell--non-numeric">Social Account</th>
 					<th class="mdl-data-table__cell--non-numeric">Friend</th>
-					<th class="mdl-data-table__cell--non-numeric">Created At</th>
+					<th class="mdl-data-table__cell--non-numeric mdl-layout--large-screen-only">Created At</th>
 					<th class="mdl-data-table__cell--non-numeric no-sort no-search">Actions</th>
 				</tr>
 			  </thead>

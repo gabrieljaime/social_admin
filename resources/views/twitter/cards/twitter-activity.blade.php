@@ -27,8 +27,3 @@
     </div>
 
 </div>
-
-
-@section('footer_scripts')
-   
-@endsection

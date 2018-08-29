@@ -114,7 +114,29 @@
 		--}}
 
 @endsection
-
+@php 
+$dialogTitle = trans('twitter.confirm_delete_title_text'); 
+$dialogSaveBtnText = trans('twitter.btn-disconnect'); 
+$dialogSubTitle=trans('twitter.confirm_delete_subtitle_text'); 
+@endphp
+	@include('dialogs.dialog-delete')
 @section('footer_scripts')
+<script type="text/javascript">
+	
+	mdl_dialog('.dialiog-trigger{{$id}}','','#dialog_delete');
 
+	var socialid;
+	
+            $('.dialiog-trigger-delete').click(function(event) {
+                event.preventDefault();
+                socialid = $(this).attr('data-socialid');
+               
+           });
+            $('#confirm').click(function(event) {
+				$('#confirm .mdl-spinner-text').fadeOut(1, function() 
+				{ $('#confirm .mdl-spinner').addClass('is-active'); });
+                $('form#delete_'+socialid).submit();
+
+            });
+</script>
 @endsection

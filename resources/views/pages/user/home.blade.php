@@ -81,4 +81,5 @@
 @endsection
 
 @section('footer_scripts')
+
 @endsection

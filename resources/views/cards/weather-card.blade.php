@@ -35,4 +35,4 @@
 
 @section('footer_scripts')
     @include('scripts.weather')
-@endsection
+@append

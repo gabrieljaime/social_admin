@@ -75,7 +75,3 @@ else {
     
 </div>
 @endif
-
-@section('footer_scripts')
-   
-@endsection
