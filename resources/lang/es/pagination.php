@@ -16,4 +16,8 @@ return [
     'previous' => '&laquo; Anterior',
     'next'     => 'Siguiente &raquo;',
 
+    'highlight'=>'{0}Resaltar palabra ...|[2,*] Resaltar palabras(s)',
+    'search'=>'{0}Buscar palabra... ...|[2,*] Buscar palabras(s)',
+    
+
 ];

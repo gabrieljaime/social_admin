@@ -10,111 +10,89 @@
 
 <div class="{{ $userCardBg }} mdl-card__title @if (Auth::user()->profile->user_profile_bg == NULL) @endif" @if (Auth::user()->profile->user_profile_bg != NULL) style="background: url('{{Auth::user()->profile->user_profile_bg}}') center/cover;" @endif>
     <h2 class="mdl-card__title-text mdl-title-username mdl-color-text--white text-center">
-        Hi {{ Auth::user()->name }}
+        {{__('welcome.hi')}} {{ Auth::user()->name }}&nbsp; <sup class="supidc">({{__('usersmanagement.freeUser')}})</sup>
     </h2>
 </div>
 <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+    <div style="display:flex">
+        <em>{{__('welcome.thank')}}&nbsp; </em> {{__('welcome.checking')}} 
+        
+        &nbsp;&nbsp;<strong>{{__('welcome.follow')}} </strong>
+     <div style="margin-top: -8px; padding-left: 5px;">   
+     <a href="https://twitter.com/Social_Admins?ref_src=twsrc%5Etfw" class="twitter-follow-button"  data-size="large" data-show-screen-name="false"
+        data-show-count="false">Follow @Social_Admins</a>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+     </div></div>
+     <br>
     <p>
-        <em>Thank you</em> for checking out this Laravel Material Design Lite project. <strong>Please remember to star this repository!</strong>
-    </p>
-    <p>
-        This page route is protected by <code>activated</code> middleware. Only accounts with activated emails are able pass this middleware.
+        
     </p>
     <p>
         <small>
-            <i class="material-icons md-18 vertical-align-minus-4">verified_user</i> Users registered via Social providers are by default activated.
+            <i class="material-icons md-18 vertical-align-minus-4">verified_user</i>{{__('welcome.register_social')}}
         </small>
     </p>
     <hr>
+    <div >
     <p>
-        You have
-        <span class="mdl-chip mdl-chip--contact {{ $levelBgClass }} mdl-color-text--white md-chip">
-            <span class="mdl-chip__contact {{ $leveIconlBgClass }} mdl-color-text--white">
-                <i class="material-icons">{{ $levelIcon }}</i>
-            </span>
-            <span class="mdl-chip__text">{{ $levelName }}</span>
-        </span>
-    </p>
+        {{__('welcome.add_twitter')}}
+    
+            <a href="{{ route('social.redirect', ['provider' => 'twitter']) }}"  class="social-twitter " id="add_twitter">
+                  <i  class="material-icons ">add_circle</i>
+                <svg viewBox="0 0 100 100" class="twitter-add_icon" >
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-twitter"></use>
+                </svg>
+               <span class="mdl-tooltip mdl-tooltip--top" for="add_twitter">
+                                {{__('twitter.add_tolltip')}}
+                                </span>
+            </a>
+    </p>        
+          <p>
+    <small>{{__('welcome.free_accounts')}} </small>
+          </p>
+        
+    </div>
     <hr>
-    <p>
-        You have access to {{ $levelAmount }}:
-        @level(5)
-            <span class="mdl-chip sm-chip {{ $accessLevel5Bg }} mdl-color-text--white">
-                <span class="mdl-chip__text">5</span>
-            </span>
-        @endlevel
+   <div>
+       <p>
 
-        @level(4)
-            <span class="mdl-chip sm-chip {{ $accessLevel4Bg }} mdl-color-text--white">
-                <span class="mdl-chip__text">4</span>
-            </span>
-        @endlevel
-
-        @level(3)
-            <span class="mdl-chip sm-chip {{ $accessLevel3Bg }} mdl-color-text--white">
-                <span class="mdl-chip__text">3</span>
-            </span>
-        @endlevel
-
-        @level(2)
-            <span class="mdl-chip sm-chip {{ $accessLevel2Bg }} mdl-color-text--white">
-                <span class="mdl-chip__text">2</span>
-            </span>
-        @endlevel
-
-        @level(1)
-            <span class="mdl-chip sm-chip {{ $accessLevel1Bg }} mdl-color-text--white">
-                <span class="mdl-chip__text">1</span>
-            </span>
-        @endlevel
+        {{__('welcome.add_rss')}}
+    
+        <a href="{{ route('feeds.create') }}" id="add_feed">
+                      <i  class="material-icons " style="word-spacing:-8px;">add_circle rss_feed</i>
+                  
+                 <span class="mdl-tooltip mdl-tooltip--top" for="add_feed">
+                                        {{__('feed.add_tolltip')}}
+                                        </span>
+                </a>
     </p>
+    <p>
+        <small>{{__('welcome.feed_small')}}</small>
+        <small>{{__('welcome.free_feed')}}</small>
+    </p>
+    
+    </div>
 
-   @permission('view.users', 'create.users', 'edit.users', 'delete.users')
+  
         <hr>
-        <p>
-            You have permissions:
-            @permission('view.users')
-                <span class="mdl-chip mdl-chip--contact {{ $userPermDetails['view']['bg'] }} mdl-color-text--white sm-chip">
-                    <span class="mdl-chip__contact {{ $userPermDetails['view']['iconBg'] }} mdl-color-text--white">
-                        <i class="material-icons">{{ $userPermDetails['view']['icon'] }}</i>
-                    </span>
-                    <span class="mdl-chip__text">{{ trans('permsandroles.permissionView') }}</span>
-                </span>
-            @endpermission
+<div>
+    <p>
+    {{__('welcome.add_agenda')}}
 
-            @permission('create.users')
-                <span class="mdl-chip mdl-chip--contact {{ $userPermDetails['create']['bg'] }} mdl-color-text--white sm-chip">
-                    <span class="mdl-chip__contact {{ $userPermDetails['create']['iconBg'] }} mdl-color-text--white">
-                        <i class="material-icons">{{ $userPermDetails['create']['icon'] }}</i>
-                    </span>
-                    <span class="mdl-chip__text">{{ trans('permsandroles.permissionCreate') }}</span>
-                </span>
-            @endpermission
+    <a href="{{ route('agenda.create') }}" id="add_agenda">
+                      <i  class="material-icons " style="word-spacing:-8px;">add_circle calendar_today</i>
+                  
+                  <span class="mdl-tooltip mdl-tooltip--top" for="add_agenda">
+                                    {{__('twitter.add_agenda_tolltip')}}
+                                    </span>
+                </a>
+</p>
+<p>
+    <small>{{__('welcome.agenda_small')}}</small>
+</p>
 
-            @permission('edit.users')
-                <span class="mdl-chip mdl-chip--contact {{ $userPermDetails['edit']['bg'] }} mdl-color-text--white sm-chip">
-                    <span class="mdl-chip__contact {{ $userPermDetails['edit']['iconBg'] }} mdl-color-text--white">
-                        <i class="material-icons">{{ $userPermDetails['edit']['icon'] }}</i>
-                    </span>
-                    <span class="mdl-chip__text">{{ trans('permsandroles.permissionEdit') }}</span>
-                </span>
-            @endpermission
-
-            @permission('delete.users')
-                <span class="mdl-chip mdl-chip--contact {{ $userPermDetails['delete']['bg'] }} mdl-color-text--white sm-chip">
-                    <span class="mdl-chip__contact {{ $userPermDetails['delete']['iconBg'] }} mdl-color-text--white">
-                        <i class="material-icons">{{ $userPermDetails['delete']['icon'] }}</i>
-                    </span>
-                    <span class="mdl-chip__text">{{ trans('permsandroles.permissionDelete') }}</span>
-                </span>
-            @endpermission
-        </p>
-
-    @endpermission
+</div>
 
     <br />
-    <br />
-
-    <iframe src="https://ghbtns.com/github-btn.html?user=jeremykenedy&repo=laravel-material-design&type=star&count=true" frameborder="0" scrolling="0" class="star-count"></iframe>
-
+    <br />   
 </div>

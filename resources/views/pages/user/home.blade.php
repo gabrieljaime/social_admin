@@ -35,7 +35,7 @@
 
 		
 
-		@include('cards.weather-card')
+		@include('cards.sent-tweets')
 
 		
 		

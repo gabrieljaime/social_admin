@@ -59,7 +59,7 @@ else {
 
    
      <div class="mdl-card__title mdl-color--primary mdl-color-text--white" >
-      All Rigth -- No {{ trans('twitter.title-'.$type) }} Account
+      {{__('twitter.all_right_no')}} {{ trans('twitter.title-'.$type) }} {{__('twitter.account')}}
     </div>
     <div class="mdl-card__supporting-text mdl-card__supporting-text-twitt mdl-color-text--grey-600" style="text-align: center">
        

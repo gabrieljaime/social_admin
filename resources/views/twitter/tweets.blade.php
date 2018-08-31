@@ -87,7 +87,7 @@
                    
                     @include('dialogs.dialog-delete', ['isAjax'=>true,'dialogTitle' => 'Confirm Tweet Deletion', 'dialogSaveBtnText' => 'Delete'])
  
-                           @endif
+            @endif
 
                  @if ($tweets->count() > 250)           
                <div class="font-small margin-bottom-1 margin-left-1 position-botton">[*] We're showing only last 250 Tweets for your convenience.</div>  

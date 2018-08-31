@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use App\Models\Twitter;
 use App\Models\Social;
+use App\Models\TwitterSent;
 
 
 class UserController extends Controller
@@ -31,12 +32,13 @@ class UserController extends Controller
         $socials = Social::FromUser($user->id)->get();
         $twitters= new Twitter;
         $twitters = $twitters->GetSocials();
-        
+        $tweets = TwitterSent::FromUser($user->id)->get()->sortByDesc('created_at')->take(3);
+
 
         if ($user->isAdmin()) {
-            return view('pages.admin.home',compact('twitters','socials'));
+            return view('pages.admin.home',compact('twitters','socials','tweets'));
         }
 
-        return view('pages.user.home',compact('twitters','socials'));
+        return view('pages.user.home',compact('twitters','socials','tweets'));
     }
 }

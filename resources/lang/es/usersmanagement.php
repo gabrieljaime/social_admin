@@ -41,4 +41,6 @@ return [
     'labelUserLevel'	 => 'Nivel',
     'labelUserLevels'	=> 'Niveles',
 
+     'freeUser'=>'gratis',
+
 ];

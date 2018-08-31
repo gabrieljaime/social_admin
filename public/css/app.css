@@ -1144,6 +1144,14 @@
   left: 0px;
 }
 
+.supidc {
+  vertical-align: super;
+  font-size: 10pt;
+  margin-top: -8px;
+  color: #ff4081;
+  font-weight: 500;
+}
+
 * {
   font-family: Roboto;
   -webkit-font-smoothing: antialiased;
@@ -1344,6 +1352,14 @@ h4 {
 .twitter-icon__white {
   fill: white !important;
   width: 24px;
+}
+
+.twitter-add_icon {
+  fill: #ff4081;
+  width: 30px;
+  margin-top: -15px;
+  margin-left: -4px;
+  background: white;
 }
 
 .mdl-card__title-text.mdl-card__title-text-twitt {

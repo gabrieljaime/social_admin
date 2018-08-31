@@ -26,19 +26,19 @@
          <i class="material-icons">people</i>  {{$twitter->followers_count}}
         </span>
         <span class="mdl-tooltip mdl-tooltip--large" for="fow.{{$twitter->id}}">
-        Followers
+        {{__('twitter.followers')}}
         </span>
             <span id="fri.{{$twitter->id}}" href="#" class="mdl-button mdl-js-button  mdl-js-ripple-effect mdl-button--accent mdl-shadow--2dp mdl-cell margin-top-0-tablet-important mdl-cell--4-col mdl-cell--1-col-tablet mdl-cell--4-col-desktop">
                <i class="material-icons">favorite</i> {{$twitter->friends_count}}
             </span>
              <span class="mdl-tooltip mdl-tooltip--large" for="fri.{{$twitter->id}}">
-            Friends
+            {{__('twitter.friends')}}
             </span>
       <span id="twit.{{$twitter->id}}" href="#" class="mdl-button mdl-js-button  mdl-js-ripple-effect mdl-button--primary mdl-shadow--2dp mdl-cell margin-top-0-tablet-important mdl-cell--4-col mdl-cell--1-col-tablet mdl-cell--4-col-desktop">
             <i class="material-icons">create</i> {{$twitter->statuses_count}} 
             </span>  
             <span class="mdl-tooltip mdl-tooltip--large" for="twit.{{$twitter->id}}">
-            Tweets
+            {{__('twitter.tweets')}}
             </span>
     </div>
 

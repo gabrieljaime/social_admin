@@ -16,4 +16,6 @@ return [
     'previous' => '&laquo; Previous',
     'next'     => 'Next &raquo;',
 
+    'highlight'=>'Highlight term ...|Highlight terms(s)',
+    'search'=>'{0}Search term... ...|[2,*] Search terms(s)',
 ];

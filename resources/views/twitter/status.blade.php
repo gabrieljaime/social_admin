@@ -5,7 +5,7 @@
 @endsection
 
 @section('header')
-	Twitter Account  {{'@'.$social_card->screen_name }}
+	{{__('twitter.twitter_account')}}  {{'@'.$social_card->screen_name }}
 @endsection
 
 @section('breadcrumbs')
@@ -50,7 +50,7 @@
 			
 
 				
-				Twitter Account  {{'@'.$social_card->screen_name }}
+				{{__('twitter.twitter_account')}}  {{'@'.$social_card->screen_name }}
 			
 			
 			
@@ -60,17 +60,17 @@
 			
 					<i class="material-icons">people</i>{{$social_card->followers_count}}
 			</span>
-			<span class="mdl-tooltip mdl-tooltip--large" for="fow">Followers
+			<span class="mdl-tooltip mdl-tooltip--large" for="fow">{{__('twitter.followers')}}
 			</span>
 				<span id="fri" href="#" >
 				<i class="material-icons">favorite</i>{{$social_card->friends_count}}
 				</span>
-				<span class="mdl-tooltip mdl-tooltip--large" for="fri">Friends
+				<span class="mdl-tooltip mdl-tooltip--large" for="fri">{{__('twitter.friends')}}
 				</span>
 				<span id="twit" href="#" >
 				<i class="material-icons">create</i>{{$social_card->statuses_count}} 
 				</span>  
-				<span class="mdl-tooltip mdl-tooltip--large" for="twit">Tweets
+				<span class="mdl-tooltip mdl-tooltip--large" for="twit">{{__('twitter.tweets')}}
 				</span>
 
 			</h2>

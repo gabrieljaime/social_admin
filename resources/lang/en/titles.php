@@ -32,4 +32,12 @@ return [
     'adminPHP'		  => 'PHP Info',
     'adminRoutes'	=> 'Routing Info',
 
+    'task'=>'Tasks',
+    'create_task'=>'Create Task',
+    'feeds'=>'Feeds',
+    'twitter_accounts'=>'Twitter Accounts',
+    'twitter_agenda'=>'Twitter Agenda',
+    'tweet_sent'=>'Sent Tweet',
+    'white_list'=>'White List',
+
 ];

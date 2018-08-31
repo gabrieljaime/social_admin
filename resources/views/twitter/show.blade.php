@@ -8,7 +8,7 @@
 @endsection
 
 @section('header')
-	{{ trans('twitter.title-'.$type) }} {{ trans('twitter.accounts') }} 
+	{{ trans('twitter.title-'.$type) }} {{ trans('twitter.account') }} 
 @endsection
 
 @section('breadcrumbs')
@@ -54,12 +54,10 @@
 <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--12-col-desktop margin-top-0">
 	<div class="mdl-card__title mdl-color--primary mdl-color-text--white">
 		<h2 class="mdl-card__title-text logo-style">
-			@if ($friends->count() === 1)
-				{{ $friends->count() }} Twitter Account
-			@elseif ($friends->count() > 1)
-				{{ $friends->count() }} Twitter Accounts
-			@else
-				No Twitter's Accounts :(
+				@if (count($friends) > 0) 
+					{{ count($friends) }} {{ trans_choice('twitter.twitter_accounts',count($friends))}}
+			 @else
+			      {{trans_choice('twitter.twitter_accounts',0)}} 
 			@endif
 		</h2>
 
@@ -71,13 +69,14 @@
 									
 				<thead>
 				<tr>
-					<th class="mdl-data-table__cell--non-numeric">NAME</th>
-					<th class="mdl-data-table__cell--non-numeric">TWEETS</th>
-					 <th class="mdl-data-table__cell--non-numeric">JOINED</th>
-					  <th class="mdl-data-table__cell--non-numeric">ACTIVITY</th>
-					  <th class="mdl-data-table__cell--non-numeric">FRIENDS</th>
-					   <th class="mdl-data-table__cell--non-numeric">FOLLOWERS</th>
-					<th class="mdl-data-table__cell--non-numeric no-sort no-search">ACTIONS</th>
+				
+					<th class="mdl-data-table__cell--non-numeric">{{__('twitter.cl_name')}}</th>
+					<th class="mdl-data-table__cell--non-numeric">{{__('twitter.cl_tweets')}}</th>
+					 <th class="mdl-data-table__cell--non-numeric">{{__('twitter.cl_joined')}}</th>
+					  <th class="mdl-data-table__cell--non-numeric">{{__('twitter.cl_activity')}}</th>
+					  <th class="mdl-data-table__cell--non-numeric">{{__('twitter.cl_friends')}}</th>
+					   <th class="mdl-data-table__cell--non-numeric">{{__('twitter.cl_followers')}}</th>
+					<th class="mdl-data-table__cell--non-numeric no-sort no-search">{{__('twitter.cl_actions')}}</th>
 				</tr>
 			  </thead>
 			  <tbody>
@@ -133,7 +132,7 @@
 					  {!! Form::open(array('class' => 'inline-block', 'id' => $social->id, 'friend_id'=>$friend->get('id'),  'method' => 'POST', 'route' => array('twitter.unfollow', $social->id,$friend->get('id') ))) !!}
    
 					<button type="submit" class="dialog-button-save mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-							Unfollow</button>
+							{{__('twitter.unfollow')}}</button>
 							
 									
 						{!! Form::close() !!}
@@ -141,9 +140,11 @@
 								{{-- White List ICON BUTTON --}}   
 						{!! Form::open(array('class' => 'inline-block', 'id' => $social->id,  'method' => 'POST', 'route' => array('twitter.addwhitelist', $social->id ))) !!}
                                   <input type="hidden" name="friend" value={{base64_encode(json_encode($friend))}}>
-			                      <button type="submit"  style="min-width: 0px;" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color-text--white  mdl-color--teal-300">
-						   	      <i class="material-icons">security</i></button>
-							
+			                      <button id="white.{{$friend->get('id')}}" type="submit"  style="min-width: 0px;" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color-text--white  mdl-color--teal-300">
+						   	      <i  class="material-icons">security</i></button>
+									<span class="mdl-tooltip mdl-tooltip--large" for="white.{{$friend->get('id')}}">
+									        {{__('twitter.white_list')}}
+									        </span>
 			
 																
 										{!! Form::close() !!}

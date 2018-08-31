@@ -18,7 +18,7 @@
 		<!-- <i class="material-icons mdl-list__item-avatar">face</i> -->
 		<div class="demo-avatar-dropdown">
 			<span>
-				{{ Auth::user()->name }}
+				{{ Auth::user()->name }}&nbsp;<sup class="supidc">({{__('usersmanagement.freeUser')}})</sup>
 			</span>
 			<div class="mdl-layout-spacer"></div>
 			@include('partials.account-nav')
@@ -27,68 +27,68 @@
 	<nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
 		<a class="mdl-navigation__link {{ Request::is('/') ? 'mdl-navigation__link--current' : null }}" href="/" title="{{ Lang::get('titles.home') }}">
 			<i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>
-			{{ Lang::get('titles.home') }}
+			{{__('titles.home')}}
 		</a>
 		<a class="mdl-navigation__link {{ Request::is('profile/'.Auth::user()->name) ? 'mdl-navigation__link--current' : null }}" href="{{ url('/profile/'.Auth::user()->name) }}">
 			<i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">person</i>
-			{{ Lang::get('titles.profile') }}
+			{{__('titles.profile')}}
 		</a>
 		<a class="mdl-navigation__link {{ Request::is('tasks') ? 'mdl-navigation__link--current' : null }}" href="/tasks">
 			<i class="material-icons mdl-badge mdl-badge--overlap" @if (count($incompleteTasks) != 0) data-badge="{{ count($incompleteTasks) }}" @endif role="presentation">view_list</i>
-			My Tasks
+			{{__('titles.task')}}
 		</a>
 		<a class="mdl-navigation__link {{ Request::is('tasks/create') ? 'mdl-navigation__link--current' : null }}" href="/tasks/create">
 			<i class="material-icons mdl-badge mdl-badge--overlap" role="presentation">playlist_add</i>
-			Create Task
+			{{__('titles.create_task')}}
 		</a>
 
 		<a class="mdl-navigation__link {{ Request::is('feeds') ? 'mdl-navigation__link--current' : null }}" href="/feeds">
 			<i class="material-icons mdl-badge mdl-badge--overlap" @if (count($activefeeds) != 0) data-badge="{{ count($activefeeds) }}" @endif role="presentation">rss_feed</i>
-			Feeds
+			{{__('titles.feeds')}}
 		</a>
 		<a class="mdl-navigation__link {{ Request::is('twitter') || Request::is('twitter/agenda') ? 'mdl-navigation__link--current' : null }}" href="/twitter">
 			<i class="material-icons mdl-badge mdl-badge--overlap" @if (count($activeaccounts) != 0) data-badge="{{ count($activeaccounts) }}" @endif role="presentation">supervisor_account</i>
-			Twitter Accounts
+			{{__('titles.twitter_accounts')}}
 		</a>
 		<a class="mdl-navigation__link {{ Request::is('twitter/agenda')  ? 'mdl-navigation__link--current' : null }}" href="/twitter/agenda">
 			<i class="material-icons mdl-badge mdl-badge--overlap" role="presentation">calendar_today</i>
-			Twitter Agenda
+			{{__('titles.twitter_agenda')}}
 		</a>
 		<a class="mdl-navigation__link {{ Request::is('twitter/tweets')  ? 'mdl-navigation__link--current' : null }}" href="/twitter/tweets">
 		<i class="material-icons mdl-badge mdl-badge--overlap" role="presentation">send</i>
-			Tweet Sent
+			{{__('titles.tweet_sent')}}
 		</a>
 		<a class="mdl-navigation__link {{ Request::is('twitter/whitelist')  ? 'mdl-navigation__link--current' : null }}" href="/twitter/whitelist/all">
 		<i class="material-icons mdl-badge mdl-badge--overlap" role="presentation">security</i>
-			White List
+			{{__('titles.white_list')}}
 		</a>
 
 		@role('admin')
 			<a class="mdl-navigation__link {{ (Request::is('users') || Request::is('users/create') || Request::is('users/deleted')) ? 'mdl-navigation__link--current' : null }}" href="{{ url('/users') }}">
 				<i class="mdl-color-text--blue-grey-400 material-icons mdl-badge mdl-badge--overlap" data-badge="{{ $totalUsers }}" role="presentation">contacts</i>
-				{{ Lang::get('titles.adminUserList') }}
+				{{__('titles.adminUserList')}}
 			</a>
 			
 				<a class="mdl-navigation__link {{ Request::is('users/create') ? 'mdl-navigation__link--current' : null }}" href="{{ url('/users/create') }}">
 					<i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">person_add</i>
-					{{ Lang::get('titles.adminNewUser') }}
+					{{__('titles.adminNewUser')}}
 				</a>
 			
 			<a class="mdl-navigation__link {{ Request::is('themes') ? 'mdl-navigation__link--current' : null }}" href="{{ url('/themes') }}">
 				<i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">invert_colors</i>
-				{{ Lang::get('titles.adminThemesList') }}
+				{{__('titles.adminThemesList')}}
 			</a>
 			<a class="mdl-navigation__link {{ Request::is('logs') ? 'mdl-navigation__link--current' : null }}" href="{{ url('/logs') }}">
 				<i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">bug_report</i>
-				{{ Lang::get('titles.adminLogs') }}
+				{{__('titles.adminLogs')}}
 			</a>
 			<a class="mdl-navigation__link {{ Request::is('php') ? 'mdl-navigation__link--current' : null }}" href="{{ url('/php') }}">
 				<i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">info</i>
-				{{ Lang::get('titles.adminPHP') }}
+				{{__('titles.adminPHP')}}
 			</a>
 			<a class="mdl-navigation__link {{ Request::is('routes') ? 'mdl-navigation__link--current' : null }}" href="{{ url('/routes') }}">
 				<i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">settings_ethernet</i>
-				{{ Lang::get('titles.adminRoutes') }}
+				{{__('titles.adminRoutes')}}
 			</a>
 		@endrole
 
