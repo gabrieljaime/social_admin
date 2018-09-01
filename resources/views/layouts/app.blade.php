@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="{{ config('app.locale') }}">
     <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-101589410-2"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+        		  function gtag(){dataLayer.push(arguments);}
+        		  gtag('js', new Date());
+        		
+        		  gtag('config', 'UA-101589410-2');
+        </script>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,7 +19,7 @@
 
         <title>@if (trim($__env->yieldContent('template_title')))@yield('template_title') | @endif {{ config('app.name', Lang::get('titles.app')) }}</title>
         <meta name="description" content="">
-        <meta name="author" content="Jeremy Kenedy">
+        <meta name="author" content="Gabriel Jaime">
         <link rel="shortcut icon" href="/favicon.ico">
 
         {{-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries --}}
