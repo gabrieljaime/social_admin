@@ -7,13 +7,11 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use App\Models\Twitter;
-use Log;
 
 class ProcessTwitterAgenda implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    protected  $time;
     /**
      * Create a new job instance.
      *
@@ -33,7 +31,7 @@ class ProcessTwitterAgenda implements ShouldQueue
     public function handle()
     {
        $twitter = New Twitter();
-       $twitter->ProcessTwittersFeeds();
+       $twitter->ProcessTwittersAgenda();
   
     }
 }
