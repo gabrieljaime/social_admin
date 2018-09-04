@@ -1,14 +1,14 @@
 @extends('layouts.dashboard')
 
 @section('template_title')
-  Showing Feeds
+{{__('feed.showing_title')}}
 @endsection
 
 @section('template_linked_css')
 @endsection
 
 @section('header')
-    Showing All Feeds
+   {{__('feed.showing_all')}}
 @endsection
 
 @php
@@ -28,7 +28,7 @@
     <li class="active" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
         <a itemprop="item" href="/feeds" disabled>
             <span itemprop="name">
-                Feeds List
+                {{__('feed.feed_list')}}
             </span>
         </a>
         <meta itemprop="position" content="2" />
@@ -40,12 +40,11 @@
 <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--12-col-desktop margin-top-0">
     <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
         <h2 class="mdl-card__title-text logo-style">
-            @if (count($feeds) === 1)
-            {{ count($feeds) }} Feed total
-            @elseif (count($feeds) > 1)
-                {{ count($feeds) }} Total Feeds
-            @else
-                No Feeds :(
+
+           @if (count($feeds) > 1) 
+           {{ count($feeds) }} {{trans_choice('feed.feed_totals',count($feeds))}} 
+           @else 
+           {{trans_choice('feed.feed_totals',0)}}
             @endif
         </h2>
 
@@ -55,15 +54,15 @@
             <table id="feeds_table" class="mdl-data-table mdl-js-data-table data-table" cellspacing="0" width="100%">
               <thead>
                 <tr>
-                    <th class="mdl-data-table__cell--non-numeric">Name</th>
-                    <th class="mdl-data-table__cell--non-numeric">Interval</th>
-                    <th class="mdl-data-table__cell--non-numeric">Posts</th>
-                    <th class="mdl-data-table__cell--non-numeric mdl-layout--large-screen-only">Start Text</th>
-                    <th class="mdl-data-table__cell--non-numeric mdl-layout--large-screen-only">End Text</th>
-                    <th class="mdl-data-table__cell--non-numeric mdl-layout--large-screen-only">Assinged to</th>
-                    <th class="mdl-data-table__cell--non-numeric">Status</th>
-                    <th class="mdl-data-table__cell--non-numeric mdl-layout--large-screen-only">Created</th>
-                    <th class="mdl-data-table__cell--non-numeric no-sort no-search">Actions</th>
+                    <th class="mdl-data-table__cell--non-numeric">{{__('feed.name')}}</th>
+                    <th class="mdl-data-table__cell--non-numeric">{{__('feed.interval')}}</th>
+                    <th class="mdl-data-table__cell--non-numeric">{{__('feed.ppost')}}</th>
+                    <th class="mdl-data-table__cell--non-numeric mdl-layout--large-screen-only">{{__('feed.begin')}}</th>
+                    <th class="mdl-data-table__cell--non-numeric mdl-layout--large-screen-only">{{__('feed.end')}}</th>
+                    <th class="mdl-data-table__cell--non-numeric mdl-layout--large-screen-only">{{__('feed.assigned')}}</th>
+                    <th class="mdl-data-table__cell--non-numeric">{{__('feed.status')}}</th>
+                    <th class="mdl-data-table__cell--non-numeric mdl-layout--large-screen-only">{{__('feed.created')}}</th>
+                    <th class="mdl-data-table__cell--non-numeric no-sort no-search">{{__('feed.actions')}}</th>
                 </tr>
               </thead>
               <tbody>
@@ -71,7 +70,7 @@
                                     
                                                    
                         <tr>
-                            <td class="mdl-data-table__cell--non-numeric"><a href="{{ URL::to('feeds/' . $feed->id) }}">{{$feed->name}}</td>
+                            <td class="mdl-data-table__cell--non-numeric"><a href="{{ URL::to('feeds/' . $feed->id.'/edit') }}">{{$feed->name}}</td>
                             <td class="mdl-data-table__cell--non-numeric">{{  Carbon\CarbonInterval::fromString($feed->term_to_check.'m')->cascade()->forHumans() }} </td>
                             <td class="mdl-data-table__cell--non-numeric">{{$feed->post_by_check}} </td>
                             <td class="mdl-data-table__cell--non-numeric mdl-layout--large-screen-only">{{$feed->begin}}</td>
@@ -129,9 +128,9 @@
 
         @include('partials.mdl-search')
 
-        <a href="{{ url('/feeds/create') }}" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect mdl-color-text--white" title="Add New Feed">
+        <a href="{{ url('/feeds/create') }}" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect mdl-color-text--white" title="{{__('feed.add_new')}}">
             <i class="material-icons">add</i>
-            <span class="sr-only">Add New Feed</span>
+        <span class="sr-only">{{__('feed.add_new')}}</span>
         </a>
 
     </div>

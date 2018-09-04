@@ -31,10 +31,10 @@ return [
     'showProfileGitHubUsername'  => 'Usuario de Github',
 
     // USER profile page
-    'showProfileTitle' => ':username\'s Profile',
+    'showProfileTitle' => 'Perfil de :username',
 
     // USER EDIT profile page
-    'editProfileTitle' => 'Profile Settings',
+    'editProfileTitle' => 'Configuración del Perfil',
 
     // User edit profile form
     'label-theme' => 'Tu tema:',    
@@ -53,43 +53,43 @@ return [
     'ph-twitter_username'    => 'Enter your Twitter username',
 
     // User Account Settings Tab
-    'editTriggerAlt'        => 'Toggle User Menu',
-    'editAccountTitle'      => 'Account Settings',
-    'editAccountAdminTitle' => 'Account Administration',
-    'updateAccountSuccess'  => 'Your account has been successfully updated',
-    'submitProfileButton'   => 'Save Changes',
+    'editTriggerAlt'        => 'Alternar menú de usuario',
+    'editAccountTitle'      => 'Configuraciones de la cuenta',
+    'editAccountAdminTitle' => 'Administración de cuenta',
+    'updateAccountSuccess'  => 'Tu cuenta ha sido actualizada exitosamente',
+    'submitProfileButton'   => 'Guardar Cambios',
 
     // User Account Admin Tab
-    'submitPWButton'    => 'Update Password',
-    'changePwTitle'     => 'Change Password',
-    'changePwPill'      => 'Change Password',
-    'deleteAccountPill' => 'Delete Account',
-    'updatePWSuccess'   => 'Your password has been successfully updated',
+    'submitPWButton'    => 'Actualizar contraseña',
+    'changePwTitle'     => 'Cambiar contraseña',
+    'changePwPill'      => 'Cambiar contraseña',
+    'deleteAccountPill' => 'Borrar cuenta',
+    'updatePWSuccess'   => 'Su contraseña ha sido actualizada satisfactoriamente',
 
     // Delete Account Tab
-    'deleteAccountTitle'        => 'Delete Account',
-    'deleteAccountBtn'          => 'Delete My Account',
-    'deleteAccountBtnConfirm'   => 'Delete My Account',
-    'deleteAccountConfirmTitle' => 'Confirm Account Deletion',
-    'deleteAccountConfirmMsg'   => 'Are you sure you want to delete your account?',
-    'confirmDeleteRequired'     => 'Confirm Account Deletion is required',
+    'deleteAccountTitle'        => 'Borrar Cuenta',
+    'deleteAccountBtn'          => 'Borrar Mi Cuenta',
+    'deleteAccountBtnConfirm'   => 'Borrar Mi Cuenta',
+    'deleteAccountConfirmTitle' => 'Confirmar la eliminación de la cuenta',
+    'deleteAccountConfirmMsg'   => '¿Seguro que quieres eliminar tu cuenta?',
+    'confirmDeleteRequired'     => 'Confirmar la eliminación de la cuenta es obligatorio',
 
-    'errorDeleteNotYour'        => 'You can only delete your own profile',
-    'successUserAccountDeleted' => 'Your account has been deleted',
+    'errorDeleteNotYour'        => 'Solo puedes borrar tu propio perfil',
+    'successUserAccountDeleted' => 'Tu cuenta ha sido eliminada',
 
     // Messages
-    'updateSuccess' => 'Your profile has been successfully updated',
-    'submitButton'  => 'Save Changes',
+    'updateSuccess' => 'Tú perfil ha sido actualizado satisfactoriamente',
+    'submitButton'  => 'Guardar Cambios',
 
     // Restore User Account
-    'errorRestoreUserTime' => 'Sorry, account cannot be restored',
-    'successUserRestore'   => 'Welcome back :username! Account Successfully Restored',
+    'errorRestoreUserTime' => 'Lo sentimos, la cuenta no se puede restaurar',
+    'successUserRestore'   => '¡Bienveido Nuevamente :username! Cuenta restaurada exitosamente',
 
     // Save button
-    'submitButton'        => 'Save',
-    'submitChangesButton' => 'Save Changes',
+    'submitButton'        => 'Guardar',
+    'submitChangesButton' => 'Guardar Cambios',
 
     // User Account
-    'accountTitle' => 'Account Settings for :username\'s',
+    'accountTitle' => 'Configuración de cuenta para :username',
 
 ];

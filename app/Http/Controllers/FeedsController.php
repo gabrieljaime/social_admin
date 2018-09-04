@@ -73,7 +73,7 @@ class FeedsController extends Controller
 
         Feed::create($feed);
 
-        return redirect('/feeds')->with('status', 'Feed created');
+        return redirect('/feeds')->with('status', __('feed.created'));
     }
 
     /**
@@ -116,7 +116,7 @@ class FeedsController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, $this->rules);
-
+       
         $feed = Feed::findOrFail($id);
         $feed->feed =$request->input('feed');
         $feed->name =$request->input('name');
@@ -127,16 +127,15 @@ class FeedsController extends Controller
         $feed->daily_posts = $request->input('daily_posts') ;
         $feed->shorten_url = (is_null($request->input('shorten_url'))) ? 0 : 1 ;
         $feed->active = (is_null($request->input('active'))) ? 0 : 1 ;
-         $feed->social_id =$request->input('social_id');
-
-        
+        $feed->social_id =$request->input('social_id');
+       
         if ($feed->active == '0') {
-            $return_msg = 'Feed Deactivated!';
+            $return_msg = __('feed.desactived');
         } else {
-            $return_msg = 'Feed Updated';
+            $return_msg = __('feed.updated');
         }
 
-        
+
         $feed->save();
 
         return Redirect::back()->with('status', $return_msg);
@@ -153,7 +152,7 @@ class FeedsController extends Controller
     {
         Feed::findOrFail($id)->delete();
 
-        return redirect('/feeds')->with('status', 'Feed Deleted');
+        return redirect('/feeds')->with('status',__('feed.deleted'));
     }
 
     public function getActiveFeeds(View $view)

@@ -26,7 +26,7 @@ class CreateFeedsTable extends Migration
             $table->integer('daily_posts');
             $table->boolean('shorten_url')->default(true);
             $table->boolean('active')->default(true);
-            $table->text('last_public')->nullable();
+            $table->dateTime('last_public')->nullable();
             $table->timestamps();
         });
     }

@@ -5,28 +5,28 @@
                 <div class="mdl-cell mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label {{ $errors->has('feed') ? 'is-invalid' :'' }}">
                       {!! Form::text('feed', NULL, array('id' => 'feed', 'class' => 'mdl-textfield__input')) !!}
-                      {!! Form::label('feed', 'Feed' , array('class' => 'mdl-textfield__label')); !!}
+                      {!! Form::label('feed', __('feed.feed') , array('class' => 'mdl-textfield__label')); !!}
                       <span class="mdl-textfield__error">Letters and numbers only</span>
                     </div>
                   </div>
                 <div class="mdl-cell mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label {{ $errors->has('name') ? 'is-invalid' :'' }}">
                       {!! Form::text('name', NULL, array('id' => 'name', 'class' => 'mdl-textfield__input')) !!}
-                      {!! Form::label('name', 'Name' , array('class' => 'mdl-textfield__label')); !!}
+                      {!! Form::label('name',__('feed.name') , array('class' => 'mdl-textfield__label')); !!}
                       <span class="mdl-textfield__error">Letters and numbers only</span>
                     </div>
                 </div>  
                    <div class="mdl-cell mdl-cell--4-col-tablet mdl-cell--6-col-desktop">
                      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label {{ $errors->has('begin') ? 'is-invalid' :'' }}">
                      {!! Form::text('begin', NULL, array('id' => 'begin', 'class' => 'mdl-textfield__input', )) !!}
-                     {!! Form::label('begin', 'Begin' , array('class' => 'mdl-textfield__label')); !!}
+                     {!! Form::label('begin', __('feed.begin') , array('class' => 'mdl-textfield__label')); !!}
                       <span class="mdl-textfield__error">Letters and numbers only</span>
                     </div>
                   </div>  
                    <div class="mdl-cell mdl-cell--4-col-tablet mdl-cell--6-col-desktop">
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label {{ $errors->has('end') ? 'is-invalid' :'' }}">
                       {!! Form::text('end', NULL, array('id' => 'end', 'class' => 'mdl-textfield__input', )) !!}
-                      {!! Form::label('end', 'End' , array('class' => 'mdl-textfield__label')); !!}
+                      {!! Form::label('end', __('feed.end') , array('class' => 'mdl-textfield__label')); !!}
                       <span class="mdl-textfield__error">Letters and numbers only</span>
                     </div>
                   </div>  
@@ -35,7 +35,7 @@
 
                       @include('feeds.partials.select_term_to_check') 
 
-                      {!! Form::label('term_to_check', 'Term to check again' , array('class' => 'mdl-textfield__label')); !!}
+                      {!! Form::label('term_to_check', __('feed.term') , array('class' => 'mdl-textfield__label')); !!}
                     </div>
                   </div>  
                   <div class="mdl-cell mdl-cell--4-col-tablet mdl-cell--4-col-desktop">
@@ -43,14 +43,14 @@
                      
                         @include('feeds.partials.select_post_by_check') 
 
-                      {!! Form::label('post_by_check', 'Post by check ' , array('class' => 'mdl-textfield__label')); !!}
+                      {!! Form::label('post_by_check', __('feed.post') , array('class' => 'mdl-textfield__label')); !!}
                       <span class="mdl-textfield__error">Numbers only</span>
                     </div>
                   </div> 
                   <div class="mdl-cell mdl-cell--4-col-tablet mdl-cell--4-col-desktop">
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label {{ $errors->has('daily_posts') ? 'is-invalid' :'' }}">
                       {!! Form::number('daily_posts', NULL, array('id' => 'daily_posts', 'class' => 'mdl-textfield__input', 'pattern' => '[0-99]*', 'max'=>'10', 'min'=>'1') )!!}
-                      {!! Form::label('daily_posts', 'Daily Posts' , array('class' => 'mdl-textfield__label')); !!}
+                      {!! Form::label('daily_posts',__('feed.daily') , array('class' => 'mdl-textfield__label')); !!}
                       <span class="mdl-textfield__error">Numbers only less than 10</span>
                     </div>
                   </div> 
@@ -58,18 +58,18 @@
                   <div class="mdl-cell mdl-cell--4-col-tablet mdl-cell--6-col-desktop">
                     <div class="mdl-textfield mdl-js-textfield  {{ $errors->has('shorten_url') ? 'is-invalid' :'' }}">
                       <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="shorten_url">
-                    <input  name=shorten_url  type="checkbox" id="shorten_url" class="mdl-switch__input" @isset($feed) {{ ($feed->shorten_url===1) ? 'checked' : ''  }} @endisset >
-                    <span class="mdl-switch__label">Shorten url</span>
+                    <input  name=shorten_url  type="checkbox" id="shorten_url" class="mdl-switch__input" @isset($feed) {{ ($feed->shorten_url===1 || $feed->shorten_url) ? 'checked' : ''  }} @endisset >
+                    <span class="mdl-switch__label">{{__('feed.shorten')}}</span>
                     </div>
                   </div> 
 
                   <div class="mdl-cell mdl-cell--4-col-tablet mdl-cell--6-col-desktop">
                     <div class="mdl-textfield mdl-js-textfield  {{ $errors->has('active') ? 'is-invalid' :'' }}">
                         <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="active">
-                        <input name="active" type="checkbox" id="active" class="mdl-switch__input"   @isset($feed){{ ($feed->active===1) ? 'checked' : ''  }} @endisset >
+                        <input name="active" type="checkbox" id="active" class="mdl-switch__input"   @isset($feed){{ ($feed->active===1 || $feed->active) ? 'checked' : ''  }} @endisset >
 
                         
-                        <span class="mdl-switch__label">Active</span>
+                        <span class="mdl-switch__label">{{__('feed.active')}}</span>
                          </label>
                     </div>
                   </div> 
@@ -87,8 +87,8 @@
                       <label for="social_id">
                           <i class="mdl-icon-toggle__label material-icons">arrow_drop_down</i>
                       </label>
-                      {!! Form::label('social_id','Assigned Account', array('class' => 'mdl-textfield__label mdl-selectfield__label')); !!}
-                      <span class="mdl-textfield__error">Select an Account to relate the feed</span>
+                      {!! Form::label('social_id',__('feed.assigned'), array('class' => 'mdl-textfield__label mdl-selectfield__label')); !!}
+                      <span class="mdl-textfield__error">{{__('feed.select_account')}}</span>
                     </div>
                   </div>
 
@@ -114,7 +114,7 @@
 
                 {{-- SAVE BUTTON--}}
                 <span class="save-actions">
-                  {!! Form::button('<i class="material-icons">save</i> Save', array('class' => 'dialog-button-save mdl-button mdl-js-button mdl-js-ripple-effect mdl-color--green mdl-color-text--white mdl-button--raised margin-bottom-1 margin-top-1 margin-top-0-desktop margin-right-1 padding-left-1 padding-right-1 ')) !!}
+                  {!! Form::button('<i class="material-icons">save</i>'.__('profile.submitButton'), array('class' => 'dialog-button-save mdl-button mdl-js-button mdl-js-ripple-effect mdl-color--green mdl-color-text--white mdl-button--raised margin-bottom-1 margin-top-1 margin-top-0-desktop margin-right-1 padding-left-1 padding-right-1 ')) !!}
                 </span>
 
               </div>
@@ -124,11 +124,11 @@
             <div class="mdl-card__menu mdl-color-text--white">
 
               <span class="save-actions">
-                {!! Form::button('<i class="material-icons">save</i>', array('class' => 'dialog-button-icon-save mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect', 'title' => 'Save Feed')) !!}
+                {!! Form::button('<i class="material-icons">save</i>', array('class' => 'dialog-button-icon-save mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect', 'title' => __('profile.submitButton').' '.__('feed.feed'))) !!}
               </span>
-              <a href="{{ url('/feeds/') }}" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect mdl-color-text--white" title="Back to Feeds">
+              <a href="{{ url('/feeds/') }}" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect mdl-color-text--white" title="{{__('feed.back')}}">
                   <i class="material-icons">reply</i>
-                  <span class="sr-only">Back to Feeds</span>
+                  <span class="sr-only">{{__('feed.back')}}</span>
               </a>
 
             </div>

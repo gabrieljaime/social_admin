@@ -5,6 +5,8 @@ namespace App\Console;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use App\Jobs\ProcessTwitterFeeds;
+use App\Jobs\ProcessTwitterAgenda;
+
 
 class Kernel extends ConsoleKernel
 {
@@ -41,6 +43,11 @@ class Kernel extends ConsoleKernel
         $schedule->job(new ProcessTwitterFeeds(720), 'ProcessTwitterFeeds')->cron('15 */12 * * *');
         $schedule->job(new ProcessTwitterFeeds(360), 'ProcessTwitterFeeds')->cron('10 */6 * * *');
         $schedule->job(new ProcessTwitterFeeds(1440), 'ProcessTwitterFeeds')->daily();
+
+
+        $schedule->job(new ProcessTwitterAgenda(), 'ProcessTwitterAgenda')->everyMinute();
+        
+
     }
 
     /**

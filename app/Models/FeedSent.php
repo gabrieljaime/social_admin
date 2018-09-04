@@ -46,5 +46,10 @@ class FeedSent extends Model
     {
         return $query->where('feed_id', $id);
     }
+     public function scopeFromToday($query)
+    {
+
+        return $query->whereDate('created_at', today());
+    }
 
 }

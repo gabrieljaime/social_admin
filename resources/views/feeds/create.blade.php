@@ -1,11 +1,11 @@
 @extends('layouts.dashboard')
 
 @section('template_title')
-  Create New Feed
+  {{__('feed.create_title')}}
 @endsection
 
 @section('header')
-  Create New Feed
+ {{__('feed.create_title')}}
 @endsection
 
 @section('breadcrumbs')
@@ -21,7 +21,7 @@
   <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
     <a itemprop="item" href="/feeds">
       <span itemprop="name">
-        Feeds List
+        {{__('feed.feed_list')}}
       </span>
     </a>
     <i class="material-icons">chevron_right</i>
@@ -30,7 +30,7 @@
   <li class="active" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
     <a itemprop="item" href="/feeds/create">
       <span itemprop="name">
-        Create New Feed
+        {{__('feed.create_title')}}
       </span>
     </a>
     <meta itemprop="position" content="3" />
@@ -44,7 +44,7 @@
         <div class="mdl-card card-new-feed" style="width:100%;" itemscope itemtype="http://schema.org/Person">
 
         <div class="mdl-card__title mdl-card--expand mdl-color--green mdl-color-text--white">
-          <h2 class="mdl-card__title-text logo-style">Create New Feed</h2>
+          <h2 class="mdl-card__title-text logo-style">{{__('feed.create_title')}}</h2>
         </div>
 
         {!! Form::open(array('action' => 'FeedsController@store', 'method' => 'POST', 'role' => 'form')) !!}

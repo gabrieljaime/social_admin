@@ -23,7 +23,9 @@ class Feed extends Model
     protected $guarded = [
         'id',
     ];
-
+    protected $date =[
+        'last_public',
+    ];
     /**
      * Fillable fields for a Profile.
      *
@@ -67,7 +69,7 @@ class Feed extends Model
     {
         return $query->where('social_id', $id);
     }
-    public function scopeFromUser($query, $id)
+    public function scopeFromUser($query)
     {
         $socials = Social::FromUser( Auth::user()->id)->get(['id']);
 
@@ -78,7 +80,12 @@ class Feed extends Model
     {
         return $query->where('active', true);
     }
-    
+       public function DailyPosts()
+    {
+        $sents=FeedSent::OfFeed($this->id)->fromToday();
+
+        return  $sents->count();
+    }
     
    
 }

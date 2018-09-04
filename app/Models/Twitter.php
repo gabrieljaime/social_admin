@@ -116,37 +116,45 @@ class Twitter extends Model
     }
 
     public function ProcessTwittersFeeds( $time )
-
     {
                 
-
+        
             $feeds = Feed::with('social')->Active()->FromTerm($time)->get();
+
+           //$feeds = Feed::with('social')->Active()->FromUser()->get();
+
+
 
             foreach ($feeds as $fe ) {
 
+                if ( $fe->DailyPosts()>=$fe->daily_posts)
+                {
+                     break;
+                }
+               
                 $feed = Feeds::make($fe->feed,$fe->post_by_check);
 
                 $feedSent= FeedSent::ofFeed($fe->id)->get();
                 
-                $items = $feed->get_items();
+                $items = array_sort(array_slice($feed->get_items(),0,$fe->post_by_check));
 
                 $minutes=0;
-                
-
+            
                 $feed_posted= $fe->post_by_check;
             
                 foreach ($items as $item) {
-
                     
+                   
+                   $item_date= \Carbon\Carbon::createFromFormat('j F Y, g:i a', $item->get_date());
+                     
                     if ($feed_posted==0)
                     {
                         break;
                     }
 
-                    if (!($feedSent->contains('feed_item_id',$item->get_id())))    
-                    {
 
-                    
+                    if (!($feedSent->contains('feed_item_id',$item->get_id())) && ($item_date>=$fe->last_public) )    
+                    {                    
 
                     $twitt=collect();
     
@@ -158,7 +166,8 @@ class Twitter extends Model
                     $twitt->origin_id=  $fe->id;
                     $twitt->origin=  'Feed';
 
-                    $fe->last_public = $item->get_id();
+                    $fe->last_public = $item_date;
+
 
                     //$this->MakeaTwitt( $twitt, $item->get_id());
 

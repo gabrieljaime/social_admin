@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('template_title')
-  Editing Feed {{ $feed->name }}
+ {{__('feed.editing_title')}} {{ $feed->name }}
 @endsection
 
 @section('template_linked_css')
@@ -26,7 +26,7 @@
   <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
     <a itemprop="item" href="/feeds">
       <span itemprop="name">
-        Feeds List
+       {{__('feed.feed_list')}}
       </span>
     </a>
     <i class="material-icons">chevron_right</i>
@@ -35,7 +35,7 @@
   <li class="active" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
     <a itemprop="item" href="/feeds/edit">
       <span itemprop="name">
-        Edit Feed
+       {{__('feed.edit_title')}}
       </span>
     </a>
     <meta itemprop="position" content="3" />
@@ -49,7 +49,7 @@
         <div class="mdl-card card-edit-feed" style="width:100%;" itemscope itemtype="http://schema.org/Person">
         
          <div class="mdl-card__title mdl-card--expand mdl-color--green mdl-color-text--white">
-          <h2 class="mdl-card__title-text logo-style">Editing Feed:</strong> {{ $feed->name }}</h2>
+          <h2 class="mdl-card__title-text logo-style">{{__('feed.editing_title')}}:</strong> {{ $feed->name }}</h2>
        
         </div>
             
