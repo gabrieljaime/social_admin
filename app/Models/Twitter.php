@@ -232,8 +232,6 @@ class Twitter extends Model
         
             $followers=collect();
 
-            Cache::forget('followers-'.$social->id);
-            Cache::forget('friends-'.$social->id);
           
             if (Cache::has('followers-'.$social->id))
             {
@@ -282,7 +280,6 @@ class Twitter extends Model
                 $a=0;
                $cursor=-1;
 
-               
                while ($a <= $social_card->friends_count) {
                 
                     $friendsT = TwitterSource::getFriendsIds(array('cursor'=> $cursor,'count'=>'5000'));
@@ -295,11 +292,6 @@ class Twitter extends Model
                     
                 }
                 
-               
-        
-      
-
-
                 foreach ($friendsids->chunk(100) as $friendsid) {
 
                    $friendsT = TwitterSource::getUsersLookup(array('user_id'=> $friendsid->implode(',')));
