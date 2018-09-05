@@ -64,7 +64,7 @@ public function CreateShortFriend ($friend,$followers,$account)
        $this->followers_count= $friend->followers_count;
        $this->friends_count= $friend->friends_count;
        $this->statuses_count= $friend->statuses_count;  
-       $this->profile_image_url= $friend->profile_image_url;
+       $this->profile_image_url= $friend->profile_image_url_https;
        $this->default_profile_image= $friend->default_profile_image;
        $this->verified= $friend->verified;
 

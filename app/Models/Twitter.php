@@ -460,7 +460,7 @@ class Twitter extends Model
         $twitter->followers_count   =$twit->followers_count;
         $twitter->friends_count =$twit->friends_count;
         $twitter->statuses_count    =$twit->statuses_count;     
-        $twitter->image_url = str_replace("normal", "bigger", $twit->profile_image_url);
+        $twitter->image_url = str_replace("normal", "bigger", $twit->profile_image_url_https);
 
 
         $twitter->color = $twit->profile_link_color;
