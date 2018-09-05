@@ -449,11 +449,13 @@ class Twitter extends Model
         $twitter->followers_count   =$twit->followers_count;
         $twitter->friends_count =$twit->friends_count;
         $twitter->statuses_count    =$twit->statuses_count;     
-        $twitter->image_url = substr($twit->profile_image_url,0,-10 ).'bigger.'.substr($twit->profile_image_url,-3 );
+        $twitter->image_url = str_replace("normal", "bigger", $twit->profile_image_url);
+
+
         $twitter->color = $twit->profile_link_color;
         if (isset($twit->profile_banner_url))
         {
-            $twitter->profile_banner_url =$twit->profile_banner_url;
+            $twitter->profile_banner_url =$twit->profile_banner_url.'/600x200';
         }
          
         return $twitter;

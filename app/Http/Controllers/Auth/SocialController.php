@@ -82,7 +82,8 @@ class SocialController extends Controller
                 if ($provider=='twitter')
                 {
                 $socialData->color =$socialUserObject->user['profile_link_color'];
-                $socialData->image = substr($socialUserObject->user['profile_image_url'],0,-10 ).'bigger.'.substr($socialUserObject->user['profile_image_url'],-3 );
+                $socialData->image = str_replace("normal", "bigger", $socialUserObject->user['profile_image_url']);
+
                
                 }
                 $socialData->token =  $socialUserObject->token;
@@ -171,7 +172,8 @@ class SocialController extends Controller
                  if ($provider=='twitter')
                 {
                 $socialData->color =$socialUserObject->user['profile_link_color'];
-                $socialData->image = substr($socialUserObject->user['profile_image_url'],0,-10 ).'bigger.'.substr($socialUserObject->user['profile_image_url'],-3 );
+                $socialData->image = str_replace("normal", "bigger", $socialUserObject->user['profile_image_url']);
+
                
                 }
 
