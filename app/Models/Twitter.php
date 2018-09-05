@@ -231,6 +231,9 @@ class Twitter extends Model
             $this->SetCredencials ($social->token,  $social->secret);
         
             $followers=collect();
+
+            Cache::forget('followers-'.$social->id);
+            Cache::forget('friends-'.$social->id);
           
             if (Cache::has('followers-'.$social->id))
             {
@@ -244,13 +247,13 @@ class Twitter extends Model
 
                 while ($a <= $social_card->followers_count) {
                 
-                    $followersT =TwitterSource::getFollowersIds(array('cursor'=> $cursor,'count'=>'200'));
+                    $followersT =TwitterSource::getFollowersIds(array('cursor'=> $cursor,'count'=>'5000'));
 
                     $cursor=$followersT->next_cursor;
                     
                     $followers=$followers->concat( $followersT->ids);
 
-                    $a=$a+200;
+                    $a=$a+5000;
                 }
 
                     Cache::put('followers-'.$social->id,serialize($followers), 15);
@@ -273,6 +276,8 @@ class Twitter extends Model
             {
                
                 $allfriends=collect();
+                $friendsids = collect();
+
             
                 $a=0;
                $cursor=-1;
@@ -280,14 +285,28 @@ class Twitter extends Model
                
                while ($a <= $social_card->friends_count) {
                 
-                  $friendsT = TwitterSource::getFriends(array('cursor'=> $cursor,'count'=>'200'));
-                    
+                    $friendsT = TwitterSource::getFriendsIds(array('cursor'=> $cursor,'count'=>'5000'));
+        
                     $cursor=$friendsT->next_cursor;
-                    $allfriends=$allfriends->concat( collect($friendsT->users));
+                    $friendsids=$friendsids->concat( collect($friendsT->ids));
 
-                    $a=$a+200;
+                    $a=$a+5000;
+
                     
                 }
+                
+               
+        
+      
+
+
+                foreach ($friendsids->chunk(100) as $friendsid) {
+
+                   $friendsT = TwitterSource::getUsersLookup(array('user_id'=> $friendsid->implode(',')));
+                   $allfriends = $allfriends->concat(collect($friendsT));
+
+                }
+              
 
                  $friendshort= new FriendsShort;
                
