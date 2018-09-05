@@ -175,6 +175,7 @@ return [
         willvincent\Feeds\FeedsServiceProvider::class,
         Jelovac\Bitly4laravel\Bitly4laravelServiceProvider::class,
         JD\Cloudder\CloudderServiceProvider::class,
+        Lab404\Impersonate\ImpersonateServiceProvider::class,
 
     ],
 

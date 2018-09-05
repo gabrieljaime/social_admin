@@ -10,7 +10,12 @@
 				{{ trans('titles.home') }}
 			</span>
     	</a>
-  	</li>
+	  </li>
+	
+	
+	@include('partials.impersonate')
+	
+
   	<li class="mdl-menu__item mdl-list__item">
 		<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" title="{!! trans('titles.logout') !!}">
 			<span class="mdl-list__item-primary-content">

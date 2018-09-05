@@ -70,6 +70,10 @@ Route::group(['middleware' => ['auth', 'activated']], function () {
 
 // Registered, activated, and is current user routes.
 Route::group(['middleware' => ['auth', 'activated', 'currentUser']], function () {
+    
+    
+    Route::impersonate();
+
     // User Profile and Account Routes
     Route::resource(
         'profile',
@@ -173,6 +177,10 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser']], function ()
 
 // Registered, activated, and is admin routes.
 Route::group(['middleware' => ['auth', 'activated', 'role:admin']], function () {
+    
+    
+
+    
     Route::resource('/users/deleted', 'SoftDeletesController', [
         'only' => [
             'index', 'show', 'update', 'destroy',

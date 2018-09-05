@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Cashier\Billable;
 use jeremykenedy\LaravelRoles\Traits\HasRoleAndPermission;
+use Lab404\Impersonate\Models\Impersonate;
 
 class User extends Authenticatable
 {
@@ -15,6 +16,7 @@ class User extends Authenticatable
     use Notifiable;
     use SoftDeletes;
     use Billable;
+    use Impersonate;
 
     /**
      * The database table used by the model.
@@ -118,5 +120,17 @@ class User extends Authenticatable
     public function removeProfile($profile)
     {
         return $this->profiles()->detach($profile);
+    }
+
+    public function canImpersonate()
+    {
+        // For example
+        return $this->hasRole('admin');
+    }
+
+      public function canBeImpersonated()
+    {
+        // For example
+        return !$this->hasRole('admin');
     }
 }
