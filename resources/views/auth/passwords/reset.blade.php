@@ -21,7 +21,7 @@
                         <input type="hidden" name="token" value="{{ $token }}">
 
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label {{ $errors->has('email') ? 'is-invalid' :'' }}">
-                                {!! Form::email('email', $email or old('email'), array('id' => 'email', 'class' => 'mdl-textfield__input', )) !!}
+                                {!! Form::email('email', $email ?? old('email'), array('id' => 'email', 'class' => 'mdl-textfield__input', )) !!}
                                 {!! Form::label('email', trans('auth.email') , array('class' => 'mdl-textfield__label')); !!}
                                 <span class="mdl-textfield__error">@if ($errors->has('email')){{{ $errors->first('email') }}} @endif</span>
                             </div>
