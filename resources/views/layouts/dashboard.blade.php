@@ -102,7 +102,7 @@
 			@include('partials.drawer-nav')
 
 			<main class="mdl-layout__content mdl-color--grey-100">
-
+			<div id="loadding" class="mdl-progress mdl-js-progress mdl-progress__indeterminate" style="width:100%"></div>
 				<nav class="breadcrumb">
 					<ul itemscope itemtype="https://schema.org/BreadcrumbList">
 						@yield('breadcrumbs')
@@ -114,8 +114,11 @@
 					@yield('content')
 
 				</div>
+				
 			</main>
 				 @include('cookieConsent::index')
+
+				 
 		</div>
 
 		{{-- Scripts --}}
@@ -130,5 +133,6 @@
 
 		@yield('footer_scripts')
 
+		
 	</body>
 </html>

@@ -29,8 +29,7 @@ class CreateUsersTable extends Migration
             $table->ipAddress('admin_ip_address')->nullable();
             $table->ipAddress('updated_ip_address')->nullable();
             $table->ipAddress('deleted_ip_address')->nullable();
-            $table->string('braintree_id')->nullable();
-            $table->string('paypal_email')->nullable();
+            $table->string('stripe_id')->nullable();
             $table->string('card_brand')->nullable();
             $table->string('card_last_four')->nullable();
             $table->timestamp('trial_ends_at')->nullable();
