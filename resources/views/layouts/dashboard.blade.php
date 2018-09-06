@@ -29,35 +29,7 @@
 			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
 
-		{{-- Fonts --}}
-		{!! HTML::style('https://fonts.googleapis.com/css?family=Roboto:300italic,400italic,400,100,300,600,700', array('type' => 'text/css', 'rel' => 'stylesheet')) !!}
-		{!! HTML::style(asset('https://fonts.googleapis.com/icon?family=Material+Icons'), array('type' => 'text/css', 'rel' => 'stylesheet')) !!}
-		@yield('template_linked_fonts')
-
-		{{-- MDL CSS Library --}}
-		@if (Auth::User() && (Auth::User()->profile) && $theme->link != null && $theme->link != 'null')
-			<link rel="stylesheet" type="text/css" href="{{ asset('css/mdl-themes/' . $theme->link) }}" id="user_theme_link">
-		@else
-			<link rel="stylesheet" type="text/css" href="{{ asset('css/mdl-themes/material.min.css') }}" id="user_theme_link">
-		@endif
-
-		
-		{{-- Custom App Styles --}}
-		<link href="{{ mix('/css/app.css') }}" rel="stylesheet">
-		
-		@yield('template_linked_css')
-		
-		<style type="text/css">
-			@yield('template_fastload_css')
-
-			@if (Auth::User() && (Auth::User()->profile) && (Auth::User()->profile->avatar_status == 0))
-				.user-avatar-nav {
-					background: url({{ Gravatar::get(Auth::user()->email) }}) 50% 50% no-repeat;
-					background-size: auto 100%;
-				}
-			@endif
-
-		</style>
+	
 
 		{{-- Scripts --}}
 		<script>
@@ -119,6 +91,28 @@
 
 				 
 		</div>
+
+		{{-- Fonts --}} {!! HTML::style('https://fonts.googleapis.com/css?family=Roboto:300italic,400italic,400,100,300,600,700',
+			array('type' => 'text/css', 'rel' => 'stylesheet')) !!} {!! HTML::style(asset('https://fonts.googleapis.com/icon?family=Material+Icons'),
+			array('type' => 'text/css', 'rel' => 'stylesheet')) !!} @yield('template_linked_fonts') {{-- MDL CSS Library --}} @if (Auth::User()
+			&& (Auth::User()->profile) && $theme->link != null && $theme->link != 'null')
+			<link rel="stylesheet" type="text/css" href="{{ asset('css/mdl-themes/' . $theme->link) }}" id="user_theme_link"> @else
+			<link rel="stylesheet" type="text/css" href="{{ asset('css/mdl-themes/material.min.css') }}" id="user_theme_link"> @endif {{-- Custom App Styles --}}
+			<link href="{{ mix('/css/app.css') }}" rel="stylesheet"> @yield('template_linked_css')
+			
+			<style type="text/css">
+				@yield('template_fastload_css') @if (Auth::User() && (Auth::User()->profile) && (Auth::User()->profile->avatar_status==0)) .user-avatar-nav {
+					background: url({{ Gravatar::get(Auth::user()->email)
+				}
+			
+				}
+			
+				) 50% 50% no-repeat;
+				background-size: auto 100%;
+				}
+			
+				@endif
+			</style>
 
 		{{-- Scripts --}}
 		{!! HTML::script('//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js', array('type' => 'text/javascript')) !!}
