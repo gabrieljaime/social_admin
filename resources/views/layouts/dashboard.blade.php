@@ -102,7 +102,6 @@
 			@include('partials.drawer-nav')
 
 			<main class="mdl-layout__content mdl-color--grey-100">
-			<div id="loadding" class="mdl-progress mdl-js-progress mdl-progress__indeterminate" style="width:100%"></div>
 				<nav class="breadcrumb">
 					<ul itemscope itemtype="https://schema.org/BreadcrumbList">
 						@yield('breadcrumbs')
@@ -132,7 +131,7 @@
 		{!! HTML::script('//maps.googleapis.com/maps/api/js?key='.env("GOOGLEMAPS_API_KEY").'&libraries=places&dummy=.js', array('type' => 'text/javascript')) !!}
 
 		@yield('footer_scripts')
-
+		
 		
 	</body>
 </html>
