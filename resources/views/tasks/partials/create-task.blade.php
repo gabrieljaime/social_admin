@@ -9,7 +9,7 @@
                     <div class="mdl-cell mdl-cell--4-col-tablet mdl-cell--6-col-desktop">
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label {{ $errors->has('name') ? 'is-invalid' :'' }}">
                             {!! Form::text('name', NULL, array('id' => 'task-name', 'class' => 'mdl-textfield__input mdl-color-text--white')) !!}
-                            {!! Form::label('name', 'Task Name', array('class' => 'mdl-textfield__label mdl-color-text--white')); !!}
+                            {!! Form::label('name', __('task.lbl_name'), array('class' => 'mdl-textfield__label mdl-color-text--white')); !!}
                             <span class="mdl-textfield__error">Task name is required</span>
                         </div>
                     </div>
@@ -30,7 +30,7 @@
                     <div class="mdl-cell mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label {{ $errors->has('description') ? 'is-invalid' :'' }}">
                             {!! Form::textarea('description', NULL, array('id' => 'task-description', 'class' => 'mdl-textfield__input mdl-color-text--white')) !!}
-                            {!! Form::label('description', 'Task Description', array('class' => 'mdl-textfield__label mdl-color-text--white')); !!}
+                            {!! Form::label('description', __('task.lbl_description'), array('class' => 'mdl-textfield__label mdl-color-text--white')); !!}
                             <span class="mdl-textfield__error"></span>
                         </div>
                     </div>
@@ -46,7 +46,7 @@
             <div class="mdl-cell mdl-cell--12-col padding-top-0 margin-top-0 margin-left-1-1">
 
                 <span class="save-actions">
-                    {!! Form::button('Create Task', array('class' => 'dialog-button-save mdl-button mdl-js-button mdl-js-ripple-effect mdl-color--primary mdl-color-text--white mdl-button--raised margin-bottom-1 margin-top-1 margin-top-0-desktop margin-right-1 padding-left-1 padding-right-1 ')) !!}
+                    {!! Form::button(__('task.create'), array('class' => 'dialog-button-save mdl-button mdl-js-button mdl-js-ripple-effect mdl-color--primary mdl-color-text--white mdl-button--raised margin-bottom-1 margin-top-1 margin-top-0-desktop margin-right-1 padding-left-1 padding-right-1 ')) !!}
                 </span>
 
             </div>
@@ -56,7 +56,7 @@
     <div class="mdl-card__menu mdl-color-text--white">
 
         <span class="save-actions">
-            {!! Form::button('<i class="material-icons">save</i>', array('class' => 'dialog-button-icon-save mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect mdl-button-colored', 'title' => 'Update Task')) !!}
+            {!! Form::button('<i class="material-icons">save</i>', array('class' => 'dialog-button-icon-save mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect mdl-button-colored', 'title' => __('task.update'))) !!}
         </span>
 
     </div>

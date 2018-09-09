@@ -11,10 +11,10 @@
                     <tr>
                         <th class="mdl-data-table__cell--non-numeric mdl-color-text--white no-sort no-search"></th>
                         <th class="mdl-data-table__cell--non-numeric mdl-color-text--white hide-mobile">ID</th>
-                        <th class="mdl-data-table__cell--non-numeric mdl-color-text--white">Name</th>
-                        <th class="mdl-data-table__cell--non-numeric mdl-color-text--white hide-mobile">Description</th>
-                        <th class="mdl-data-table__cell--non-numeric mdl-color-text--white">Status</th>
-                        <th class="mdl-data-table__cell--non-numeric mdl-color-text--white no-sort no-search">Actions</th>
+                        <th class="mdl-data-table__cell--non-numeric mdl-color-text--white">{{__('task.name')}}</th>
+                        <th class="mdl-data-table__cell--non-numeric mdl-color-text--white hide-mobile">{{__('task.description')}}</th>
+                        <th class="mdl-data-table__cell--non-numeric mdl-color-text--white">{{__('task.status')}}</th>
+                        <th class="mdl-data-table__cell--non-numeric mdl-color-text--white no-sort no-search">{{__('task.actions')}}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -38,7 +38,7 @@
             <div class="mdl-textfield__expandable-holder">
                 <input class="mdl-textfield__input" type="search" id="search_table" placeholder="Search Terms">
                 <label class="mdl-textfield__label" for="search_table">
-                    Search Terms
+                   {{__('task.search')}}
                 </label>
             </div>
         </div>

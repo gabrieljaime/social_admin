@@ -1,22 +1,22 @@
 @extends('layouts.dashboard')
 
 @section('template_title')
-    Editing Task
+   {{__('task.editing_task')}}
 @endsection
 
 @section('header')
-    Editing Task
+   {{__('task.editing_task')}}
 @endsection
 
 @if($task->completed == '1')
     @php
         $breadcrumb_status_link     = '/tasks-complete';
-        $breadcrumb_status_title    = 'Complete';
+        $breadcrumb_status_title    = __('task.complete');
     @endphp
 @elseif($task->completed == '0')
     @php
         $breadcrumb_status_link     = '/tasks-incomplete';
-        $breadcrumb_status_title    = 'Incomplete';
+        $breadcrumb_status_title    = __('task.incomplete');
     @endphp
 @endif
 
@@ -33,7 +33,7 @@
     <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
         <a itemprop="item" href="/tasks">
             <span itemprop="name">
-                My Tasks
+                {{__('task.new_task')}}
             </span>
         </a>
         <i class="material-icons">chevron_right</i>
@@ -82,18 +82,18 @@
                                     <div class="mdl-cell mdl-cell--4-col-tablet mdl-cell--6-col-desktop">
                                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label {{ $errors->has('name') ? 'is-invalid' :'' }}">
                                             {!! Form::text('name', NULL, array('id' => 'name', 'class' => 'mdl-textfield__input mdl-color-text--white')) !!}
-                                            {!! Form::label('name', 'Task Name', array('class' => 'mdl-textfield__label mdl-color-text--primary')); !!}
+                                            {!! Form::label('name', __('task.lbl_name'), array('class' => 'mdl-textfield__label mdl-color-text--primary')); !!}
                                             <span class="mdl-textfield__error">Task name is required</span>
                                         </div>
                                     </div>
 
                                     <div class="mdl-cell mdl-cell--4-col-tablet mdl-cell--6-col-desktop">
                                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-select mdl-select__fullwidth {{ $errors->has('user_level') ? 'is-invalid' :'' }}">
-                                            {!! Form::select('completed', array('1' => 'Complete', '0' => 'Incomplete'), $task->completed, array('class' => 'mdl-selectfield__select mdl-textfield__input mdl-color-text--white', 'id' => 'status')) !!}
+                                            {!! Form::select('completed', array('1' => __('task.complete'), '0' => __('task.incomplete')), $task->completed, array('class' => 'mdl-selectfield__select mdl-textfield__input mdl-color-text--white', 'id' => 'status')) !!}
                                             <label for="completed">
                                                 <i class="mdl-icon-toggle__label material-icons">arrow_drop_down</i>
                                             </label>
-                                            {!! Form::label('completed', 'Task Status', array('class' => 'mdl-textfield__label mdl-selectfield__label mdl-color-text--primary')); !!}
+                                            {!! Form::label('completed', __('task.lbl_status'), array('class' => 'mdl-textfield__label mdl-selectfield__label mdl-color-text--primary')); !!}
                                             <span class="mdl-textfield__error"></span>
                                         </div>
                                     </div>
@@ -101,7 +101,7 @@
                                     <div class="mdl-cell mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
                                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label {{ $errors->has('description') ? 'is-invalid' :'' }}">
                                             {!! Form::textarea('description', NULL, array('id' => 'description', 'class' => 'mdl-textfield__input mdl-color-text--white')) !!}
-                                            {!! Form::label('description', 'Task Description', array('class' => 'mdl-textfield__label mdl-color-text--primary')); !!}
+                                            {!! Form::label('description', __('task.lbl_description'), array('class' => 'mdl-textfield__label mdl-color-text--primary')); !!}
                                             <span class="mdl-textfield__error"></span>
                                         </div>
                                     </div>
@@ -118,11 +118,11 @@
 
                                 {{-- SAVE BUTTON--}}
                                 <span class="save-actions">
-                                    {!! Form::button('Update Task', array('class' => 'dialog-button-save mdl-button mdl-js-button mdl-js-ripple-effect mdl-color--primary mdl-color-text--white mdl-button--raised margin-bottom-1 margin-top-1 margin-top-0-desktop margin-right-1 padding-left-1 padding-right-1 ')) !!}
+                                    {!! Form::button(__('task.update'), array('class' => 'dialog-button-save mdl-button mdl-js-button mdl-js-ripple-effect mdl-color--primary mdl-color-text--white mdl-button--raised margin-bottom-1 margin-top-1 margin-top-0-desktop margin-right-1 padding-left-1 padding-right-1 ')) !!}
                                 </span>
 
                                 {{-- DELETE TASK BUTTON--}}
-                                {!! Form::button('Delete Task', array('class' => 'dialog-button-delete mdl-button mdl-js-button mdl-js-ripple-effect mdl-color--accent mdl-button-colored mdl-color-text--white mdl-button--raised margin-bottom-1 margin-top-1 margin-top-0-desktop padding-left-1 padding-right-1 ')) !!}
+                                {!! Form::button(__('task.delete'), array('class' => 'dialog-button-delete mdl-button mdl-js-button mdl-js-ripple-effect mdl-color--accent mdl-button-colored mdl-color-text--white mdl-button--raised margin-bottom-1 margin-top-1 margin-top-0-desktop padding-left-1 padding-right-1 ')) !!}
 
                             </div>
                         </div>
@@ -132,11 +132,11 @@
 
                         {{-- SAVE ICON --}}
                         <span class="save-actions">
-                            {!! Form::button('<i class="material-icons">save</i>', array('class' => 'dialog-button-icon-save mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect mdl-button-colored', 'title' => 'Update Task')) !!}
+                            {!! Form::button('<i class="material-icons">save</i>', array('class' => 'dialog-button-icon-save mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect mdl-button-colored', 'title' => __('task.update'))) !!}
                         </span>
 
                         {{-- DELETE USER ICON --}}
-                        <a href="#" class="dialog-button-delete-icon dialiog-trigger-delete dialiog-trigger{{$task->id}} mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" data-taskid="{{$task->id}}" title="Delete Task">
+                        <a href="#" class="dialog-button-delete-icon dialiog-trigger-delete dialiog-trigger{{$task->id}} mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" data-taskid="{{$task->id}}" title={{__('task.delete')}}>
                             <i class="material-icons">delete</i>
                         </a>
 
@@ -148,7 +148,7 @@
 
                 {!! Form::open(array('class' => '', 'id' => 'delete', 'method' => 'DELETE', 'route' => array('tasks.destroy', $task->id))) !!}
                     {{ method_field('DELETE') }}
-                    @include('dialogs.dialog-delete', ['dialogTitle' => 'Confirm Task Deletion', 'dialogSaveBtnText' => 'Delete'])
+                    @include('dialogs.dialog-delete', ['dialogTitle' => __('task.confirm_delete'), 'dialogSaveBtnText' => __('task.btn_delete')])
                 {!! Form::close() !!}
 
             </div>

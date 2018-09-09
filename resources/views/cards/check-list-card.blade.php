@@ -1,6 +1,6 @@
 <div class="mdl-card__supporting-text padding-bottom-0 mdl-color-text--white">
     <h3 class="mdl-card__title-text">
-        Incomplete Tasks
+        {{__('task.incomplete_tasks')}}
     </h3>
 
         @if(count($incompleteTasks) >= 1)
@@ -33,13 +33,13 @@
 
         @else
             <h6 class="text-center margin-top-2 margin-bottom-3">
-                Hooray, you have no incomplete tasks!
+                {{__('task.hooray')}}
             </h6>
         @endif
 
 </div>
 <div class="mdl-card__actions mdl-card--border">
     <a href="/tasks" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--blue-grey-50">
-        See All Tasks
+        {{__('task.see_all')}}
     </a>
 </div>

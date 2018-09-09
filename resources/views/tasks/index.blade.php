@@ -1,14 +1,14 @@
 @extends('layouts.dashboard')
 
 @section('template_title')
-    My Task List
+   {{__('task.my_tasks_list')}}
 @endsection
 
 @section('template_fastload_css')
 @endsection
 
 @section('header')
-    My Tasks
+    {{__('task.my_tasks')}}
 @endsection
 
 @section('breadcrumbs')
@@ -25,7 +25,7 @@
     <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="active">
         <a itemprop="item" href="" class="">
             <span itemprop="name">
-                My Tasks
+               {{__('task.my_tasks')}}
             </span>
         </a>
         <meta itemprop="position" content="2" />
@@ -40,18 +40,18 @@
         <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
 
             <div class="mdl-tabs__tab-bar">
-                <a href="#all" class="mdl-tabs__tab is-active">All</a>
-                <a href="#incomplete" class="mdl-tabs__tab">Incomplete</a>
-                <a href="#complete" class="mdl-tabs__tab">Complete</a>
+                <a href="#all" class="mdl-tabs__tab is-active">{{__('task.all')}}</a>
+                <a href="#incomplete" class="mdl-tabs__tab">{{__('task.incomplete')}}</a>
+                <a href="#complete" class="mdl-tabs__tab">{{__('task.complete')}}</a>
             </div>
 
-            @include('tasks/partials/task-tab', ['tab' => 'all', 'tasks' => $tasks, 'title' => 'All Tasks', 'status' => 'is-active'])
-            @include('tasks/partials/task-tab', ['tab' => 'incomplete', 'tasks' => $tasksInComplete, 'title' => 'Incomplete Tasks'])
-            @include('tasks/partials/task-tab', ['tab' => 'complete', 'tasks' => $tasksComplete, 'title' => 'Complete Tasks'])
+            @include('tasks/partials/task-tab', ['tab' => 'all', 'tasks' => $tasks, 'title' => __('task.all_tasks'), 'status' => 'is-active'])
+            @include('tasks/partials/task-tab', ['tab' => 'incomplete', 'tasks' => $tasksInComplete, 'title' => __('task.incomplete_tasks')])
+            @include('tasks/partials/task-tab', ['tab' => 'complete', 'tasks' => $tasksComplete, 'title' => __('task.complete_tasks')])
 
         </div>
 
-        @include('dialogs.dialog-delete', ['dialogTitle' => 'Confirm Task Deletion', 'dialogSaveBtnText' => 'Delete'])
+        @include('dialogs.dialog-delete', ['dialogTitle' => __('task.confirm_delete'), 'dialogSaveBtnText' => __('task.btn_delete')])
 
     @else
 
@@ -61,7 +61,7 @@
 
                 <div class="mdl-card__title mdl-card--expand mdl-color--primary mdl-color-text--white">
                     <h4 class="mdl-card__title-text">
-                        Start by creating a task
+                        {{__('task.start')}}
                     </h4>
                 </div>
 

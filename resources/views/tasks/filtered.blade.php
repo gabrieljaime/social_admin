@@ -4,18 +4,18 @@
 
     if (Request::is('tasks-all')) {
 
-        $current_view = 'All Tasks';
+        $current_view = __('task.all_tasks');
 
     } elseif (Request::is('tasks-incomplete')) {
 
-        $current_view = 'Incomplete Tasks';
+        $current_view = __('task.incomplete_tasks');
 
     } elseif (Request::is('tasks-complete')) {
 
-        $current_view = 'Completed Tasks';
+        $current_view = __('task.complete_tasks');
     } else {
 
-        $current_view = 'No Tasks';
+        $current_view =__('task.no_taks');
     }
 
 @endphp
@@ -74,7 +74,7 @@
     <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
         <a itemprop="item" href="{{url('/tasks-all')}}">
             <span itemprop="name">
-                My Tasks
+               {{__('task.my_tasks')}}
             </span>
         </a>
         <i class="material-icons">chevron_right</i>
@@ -99,15 +99,15 @@
         <div class="mdl-tabs__tab-bar simulated-tabs">
 
             <a href="{{ url('/tasks-all') }}" class="mdl-tabs__tab {{ Request::is('tasks-all') ? 'is-active' : '' }} ">
-                All
+                {{__('task.all')}}
             </a>
 
             <a href="{{ url('/tasks-incomplete') }}" class="mdl-tabs__tab {{ Request::is('tasks-incomplete') ? 'is-active' : '' }} ">
-                Incomplete
+              {{__('task.incomplete')}}
             </a>
 
             <a href="{{ url('/tasks-complete') }}" class="mdl-tabs__tab {{ Request::is('tasks-complete') ? 'is-active' : '' }} ">
-                Complete
+               {{__('task.complete')}}
             </a>
 
         </div>

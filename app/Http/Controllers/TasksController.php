@@ -115,7 +115,7 @@ class TasksController extends Controller
 
         Task::create($task);
 
-        return redirect('/tasks')->with('status', 'Task created');
+        return redirect('/tasks')->with('status',__('task.task_created'));
     }
 
     /**
@@ -162,10 +162,10 @@ class TasksController extends Controller
         $task->completed = $request->input('completed');
 
         if ($task->completed == '1') {
-            $return_msg = 'Task Completed !!!';
+            $return_msg = __('task.complete_task').' !!!';
         } else {
             $task->completed = 0;
-            $return_msg = 'Task Updated';
+            $return_msg = __('task.updated');
         }
 
         $task->save();
@@ -184,7 +184,7 @@ class TasksController extends Controller
     {
         Task::findOrFail($id)->delete();
 
-        return redirect('/tasks')->with('status', 'Task Deleted');
+        return redirect('/tasks')->with('status', __('task.deleted'));
     }
 
     /**

@@ -5,7 +5,7 @@
                 {!! Form::hidden('name', $task->name, ['id' => 'task-name-'.$task->name]) !!}
                 {!! Form::hidden('description', $task->description, ['id' => 'task-description-'.$task->id]) !!}
                 {!! Form::checkbox('completed', 1, $task->completed, ['id' => 'completed-'.$task->id, 'class' => 'mdl-checkbox__input','onClick' => 'this.form.submit()']) !!}
-                <span class="mdl-checkbox__label sr-only">Complete Task</span>
+                <span class="mdl-checkbox__label sr-only">{{__('task.complete_task')}}</span>
             </label>
         {!! Form::close() !!}
     </td>
@@ -25,11 +25,12 @@
     <td class="mdl-data-table__cell--non-numeric">
         @if ($task->completed === 1)
             <span class="badge mdl-color--green-400 mdl-color-text--white">
-                Complete
+                {{__('task.complete')}}
             </span>
         @else
             <span class="badge mdl-color--red-400 mdl-color-text--white">
-                Incomplete
+                
+                {{__('task.incomplete')}}
             </span>
         @endif
     </td>
@@ -37,13 +38,13 @@
     <td class="mdl-data-table__cell--non-numeric">
         <a href="{{ route('tasks.edit', $task->id) }}" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
             <i class="material-icons mdl-color-text--white">edit</i>
-            <span class="sr-only">Edit Task</span>
+        <span class="sr-only">{{__('task.edit')}}</span>
         </a>
         {!! Form::open(array('class' => 'inline-block', 'id' => 'delete_'.$task->id, 'method' => 'DELETE', 'route' => array('tasks.destroy', $task->id))) !!}
             {{ method_field('DELETE') }}
             <a href="#" class="dialog-button dialiog-trigger-delete dialiog-trigger{{$task->id}} mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" data-taskid="{{$task->id}}">
                 <i class="material-icons mdl-color-text--white">delete_forever</i>
-                <span class="sr-only">Delete Task</span>
+                <span class="sr-only">{{__('task.delete')}}</span>
             </a>
         {!! Form::close() !!}
     </td>
