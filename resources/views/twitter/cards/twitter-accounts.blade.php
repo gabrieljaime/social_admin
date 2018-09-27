@@ -29,11 +29,11 @@
             </span>  
             <span class="mdl-tooltip mdl-tooltip--large" for="twit">{{__('twitter.tweets')}}
             </span>
-        </div>
+    </div>
 		</h2>
 		
        
-    </div>	
+</div>	
     <div class="mdl-grid" style="margin:0px">
 
         @foreach ( $twitters as $twitter )
@@ -42,8 +42,9 @@
      
     </div>
     <div class="mdl-card__menu" style="top:4px;">
-    @include('twitter.cards.twitter-add')
+        @include('twitter.cards.twitter-add')
     </div>
+
 
 @php $dialogTitle = trans('twitter.confirm_delete_title_text'); 
 $dialogSaveBtnText = trans('twitter.btn-disconnect'); 

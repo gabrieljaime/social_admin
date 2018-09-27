@@ -18,7 +18,7 @@ class AppServiceProvider extends ServiceProvider
         //Paginator::useBootstrapThree();
         Schema::defaultStringLength(191);
         \Carbon\Carbon::setLocale(config('app.locale'));
-      
+
 
         \Laravel\Horizon\Horizon::auth(function ($request) {
          return true;

@@ -49,9 +49,9 @@
                   </div> 
                   <div class="mdl-cell mdl-cell--4-col-tablet mdl-cell--4-col-desktop">
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label {{ $errors->has('daily_posts') ? 'is-invalid' :'' }}">
-                      {!! Form::number('daily_posts', NULL, array('id' => 'daily_posts', 'class' => 'mdl-textfield__input', 'pattern' => '[0-99]*', 'max'=>'10', 'min'=>'1') )!!}
+                      {!! Form::number('daily_posts', NULL, array('id' => 'daily_posts', 'class' => 'mdl-textfield__input', 'pattern' => '[0-99]*', 'max'=>Auth::user()->Plan()->automatic, 'min'=>'1') )!!}
                       {!! Form::label('daily_posts',__('feed.daily') , array('class' => 'mdl-textfield__label')); !!}
-                      <span class="mdl-textfield__error">Numbers only less than 10</span>
+                      <span class="mdl-textfield__error">Numbers only less than {{Auth::user()->Plan()->automatic}}</span>
                     </div>
                   </div> 
 

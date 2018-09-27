@@ -38,6 +38,7 @@ class FeedsController extends Controller
         $user = Auth::user();
 
         $feeds = Feed::FromUser($user->id)->orderBy('created_at', 'asc')->get();
+        
 
         return view('feeds.index',compact('feeds', 'user'));
     }
@@ -49,8 +50,18 @@ class FeedsController extends Controller
     public function create()
     {
 
-         $user = Auth::user();
+        $user = Auth::user();
         $socials = Social::FromUser($user->id)->get();
+        $feeds = Feed::Active()->FromUser($user->id)->orderBy('created_at', 'asc')->get();
+
+        
+        if ($feeds->count()>= $user->Plan()->feed  )
+        {
+            return redirect('/feeds')->with('error', 'No puede dar de alta mas feeds');
+        }
+       
+
+
         
         return view('feeds.create',compact( 'socials'));
     }

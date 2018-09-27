@@ -52,7 +52,13 @@ class TwitterAgendaController extends Controller
          $user = Auth::user();
         $socials = Social::FromUser($user->id)->get();
         $agenda= new TwitterAgenda();
+        $agended=TwitterAgenda::FromUser($user->id)->Active()->get()->count();
         
+        if ($agended>= $user->Plan()->agended  )
+        {
+            return redirect('/feeds')->with('error', 'No puede dar de alta mas feeds');
+        }
+
         return view('twitter.agenda.create',compact( 'socials','agenda'));
     }
 

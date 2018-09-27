@@ -18,7 +18,11 @@
 		<!-- <i class="material-icons mdl-list__item-avatar">face</i> -->
 		<div class="demo-avatar-dropdown">
 			<span>
-				{{ Auth::user()->name }}&nbsp;<sup class="supidc">({{__('usersmanagement.freeUser')}})</sup>
+				{{ Auth::user()->name }}&nbsp;
+				
+				<sup class="supidc">({{__('plans.'.Auth::user()->Plan()->name)}})</sup>
+
+
 			</span>
 			<div class="mdl-layout-spacer"></div>
 			@include('partials.account-nav')

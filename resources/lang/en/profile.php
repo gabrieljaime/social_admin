@@ -64,6 +64,7 @@ return [
     'changePwTitle'     => 'Change Password',
     'changePwPill'      => 'Change Password',
     'deleteAccountPill' => 'Delete Account',
+    'changeNamePill'    => 'Edit Account',
     'updatePWSuccess'   => 'Your password has been successfully updated',
 
     // Delete Account Tab

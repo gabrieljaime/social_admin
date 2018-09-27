@@ -25,6 +25,9 @@ Route::get('material.min.css.template', 'ThemesManagementController@template');
 // Public Routes
 Route::group(['middleware' => 'web'], function () {
     // Activation Routes
+    Route::stripeWebhooks('/webhook/stripe');
+
+    
     Route::get('/activate', ['as' => 'activate', 'uses' => 'Auth\ActivateController@initial']);
 
     Route::get('/activate/{token}', ['as' => 'authenticated.activate', 'uses' => 'Auth\ActivateController@activate']);
@@ -73,6 +76,15 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser']], function ()
     
     
     Route::impersonate();
+
+    Route::get('/subscription',['as' => 'subscription', 'uses' => 'SubscriptionController@index'] );
+
+    Route::post('/subscribe_process', 'CheckoutController@subscribe_process');
+
+    Route::post('/subscription/cancel', 'SubscriptionController@cancel');
+    Route::post('/subscription/change', 'SubscriptionController@change');
+    Route::post('/subscription/resume', 'SubscriptionController@resume');
+
 
     // User Profile and Account Routes
     Route::resource(
@@ -178,7 +190,11 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser']], function ()
 // Registered, activated, and is admin routes.
 Route::group(['middleware' => ['auth', 'activated', 'role:admin']], function () {
     
-    
+  
+
+
+
+
 
     
     Route::resource('/users/deleted', 'SoftDeletesController', [

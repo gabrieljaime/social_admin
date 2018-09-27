@@ -33,12 +33,12 @@ class UserController extends Controller
         $twitters= new Twitter;
         $twitters = $twitters->GetSocials();
         $tweets = TwitterSent::FromUser($user->id)->get()->sortByDesc('created_at')->take(3);
-
+        $user_plan=$user->Plan();
 
         if ($user->isAdmin()) {
-            return view('pages.admin.home',compact('twitters','socials','tweets'));
+            return view('pages.admin.home',compact('twitters','socials','tweets','user_plan'));
         }
 
-        return view('pages.user.home',compact('twitters','socials','tweets'));
+        return view('pages.user.home',compact('twitters','socials','tweets','user_plan'));
     }
 }

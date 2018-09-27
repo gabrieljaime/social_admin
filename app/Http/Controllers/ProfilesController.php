@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Profile;
 use App\Models\Theme;
 use App\Models\User;
+use App\Models\Plans;
 use App\Notifications\SendGoodbyeEmail;
 use App\Traits\CaptureIpTrait;
 use File;
@@ -218,9 +219,15 @@ class ProfilesController extends Controller
     {
         $user = \Auth::user();
         $username = $user->name;
+        $plansNoFree = Plans::Active()->NoFree()->get();
+
+        $user_plan = $user->Plan();
+
 
         $data = [
             'user' => $user,
+            'plansNoFree'=>$plansNoFree,
+            'user_plan'=>$user_plan->name,
         ];
 
         return view('profiles.account')->with($data);

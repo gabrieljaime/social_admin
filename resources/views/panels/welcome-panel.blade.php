@@ -10,7 +10,7 @@
 
 <div class="{{ $userCardBg }} mdl-card__title @if (Auth::user()->profile->user_profile_bg == NULL) @endif" @if (Auth::user()->profile->user_profile_bg != NULL) style="background: url('{{Auth::user()->profile->user_profile_bg}}') center/cover;" @endif>
     <h2 class="mdl-card__title-text mdl-title-username mdl-color-text--white text-center">
-        {{__('welcome.hi')}} {{ Auth::user()->name }}&nbsp; <sup class="supidc">({{__('usersmanagement.freeUser')}})</sup>
+        {{__('welcome.hi')}} {{ Auth::user()->name }}&nbsp; <sup class="supidc">({{__('plans.'.Auth::user()->Plan()->name)}})</sup>
     </h2>
 </div>
 <div class="mdl-card__supporting-text mdl-color-text--grey-600">
@@ -33,6 +33,20 @@
         </small>
     </p>
     <hr>
+    <div>
+        <p>
+            {!!__('welcome.subscribe')!!}
+                <a href="{{ route('subscription') }}" id="subscribe">
+                          <i  class="material-icons " style="word-spacing:-8px;">add_circle card_membership</i>
+                      
+                     <span class="mdl-tooltip mdl-tooltip--top" for="subscribe">
+                                            {{__('plans.subscribe_plans')}}
+                                            </span>
+                    </a>
+        </p>
+    
+    </div>
+    <hr>
     <div >
     <p>
         {{__('welcome.add_twitter')}}
@@ -48,7 +62,7 @@
             </a>
     </p>        
           <p>
-    <small>{{__('welcome.free_accounts')}} </small>
+    <small>{{__('welcome.free_accounts',['cant'=>$user_plan->social, 'plan'=>$user_plan->name])}} </small>
           </p>
         
     </div>
@@ -68,7 +82,7 @@
     </p>
     <p>
         <small>{{__('welcome.feed_small')}}</small>
-        <small>{{__('welcome.free_feed')}}</small>
+        <small>{{__('welcome.free_feed', ['cant'=>$user_plan->feed])}}</small>
     </p>
     
     </div>

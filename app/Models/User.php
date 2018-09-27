@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Cashier\Billable;
 use jeremykenedy\LaravelRoles\Traits\HasRoleAndPermission;
 use Lab404\Impersonate\Models\Impersonate;
+use App\Models\Plans;
 
 class User extends Authenticatable
 {
@@ -51,8 +52,7 @@ class User extends Authenticatable
         'admin_ip_address',
         'updated_ip_address',
         'deleted_ip_address',
-        'braintree_id',
-        'paypal_email',
+        'stripe_id',
         'card_brand',
         'card_last_four',
         'trial_ends_at',
@@ -68,10 +68,12 @@ class User extends Authenticatable
         'remember_token',
         'activated',
         'token',
+        'trial_ends_at',
     ];
 
     protected $dates = [
         'deleted_at',
+        'trial_ends_at'
     ];
 
     /**
@@ -82,6 +84,11 @@ class User extends Authenticatable
     public function social()
     {
         return $this->hasMany('App\Models\Social');
+    }
+
+     public function subscrip()
+    {
+        return $this->hasMany('Laravel\Cashier\Subscription');
     }
 
     /**
@@ -117,9 +124,27 @@ class User extends Authenticatable
         return $this->profiles()->attach($profile);
     }
 
+
+
     public function removeProfile($profile)
     {
         return $this->profiles()->detach($profile);
+    }
+
+    public function Plan()
+    {
+        if ($this->subscribed('main')) 
+        {
+            $plan = $this->subscription('main')->stripe_plan;
+        }
+        else
+        {
+            $plan=null;
+        }
+
+        $user_plan = Plans::FromSubs( $plan )->first();
+        
+        return $user_plan;
     }
 
     public function canImpersonate()

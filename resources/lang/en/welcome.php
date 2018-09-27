@@ -10,9 +10,10 @@ return [
 'add_twitter'=>'Add a new Twitter Account to manage',
 'add_rss'=>'Add a data source for your messages',
 'add_agenda'=>'Schedule a Twitter',
-'free_accounts'=>'You can add up to 3 accounts in the free version, if you want to add more you should subscribe',
+'free_accounts'=>'You can add up to :cant accounts in your :plan plan, if you want to add more you should upgrade it!',
 'feed_small'=>'The sources help you generate automatic content to your accounts.',
-'free_feed'=>'You can associate up to 3 different data sources with your accounts.',
+'free_feed'=>'You can associate up to :cant different data sources with your accounts in your plan.',
 'agenda_small'=> 'You can schedule your messages for the future and incorporate a frequency to repeat them. You can also send messages at the moment.',
+'subscribe'=>'<strong>Subscribe to our plans for a better experience!!</strong> Choose a Yearly plan to get 2 <strong>Free</strong> months !!',
 
 ];
