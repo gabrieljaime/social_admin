@@ -133,6 +133,7 @@ class User extends Authenticatable
 
     public function Plan()
     {
+        
         if ($this->subscribed('main')) 
         {
             $plan = $this->subscription('main')->stripe_plan;
@@ -141,9 +142,15 @@ class User extends Authenticatable
         {
             $plan=null;
         }
-
+        if ($this->hasRole('admin'))
+        {
+         $user_plan = Plans::ForAdmin()->first();
+   
+        }
+        else{
         $user_plan = Plans::FromSubs( $plan )->first();
-        
+        }
+
         return $user_plan;
     }
 

@@ -13,6 +13,7 @@ return [
      */
     'plans'=>'{1}Plan|[2,*]Plans',
     'Free' => 'Free',
+    'Admin' => 'Admin',
     'Personal' => 'Personal',
     'Professional' => 'Professional',
     'Community' => 'Community',

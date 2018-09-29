@@ -70,6 +70,12 @@ class Plans extends Model
         return $query->orWhere('stripe_id_m', $id)->orWhere('stripe_id_y',$id);
 
     }
+
+      public function scopeForAdmin($query)
+    {
+        return $query->where('name', 'Admin');
+
+    }
     
      public function scopeActive($query)
     {
@@ -78,7 +84,7 @@ class Plans extends Model
      public function scopeFree($query)
     {
 
-        return $query->where('price_m', 0);
+        return $query->where('price_m', 0)->where('name','<>', 'Admin');
     }
      public function scopeNoFree($query)
     {

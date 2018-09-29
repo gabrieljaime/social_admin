@@ -14,6 +14,7 @@ return [
 
     'plans'=>'{1}Plan|[2,*]Planes',
     'Free' => 'Gratis',
+    'Admin' => 'Admin',
     'Personal' => 'Personal',
     'Professional' => 'Profesional',
     'Community' => 'Comunidad',
